@@ -4,9 +4,9 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import '../index.css';
-import Layout from "./Layout";
-import { Home, ErrorPage } from "../Pages";
+import '../../../mtg-frontend/src/index.css';
+import Layout from "./Layout/index.js";
+import { Home, ErrorPage } from "../Pages/index.js";
 
 const router = createBrowserRouter(createRoutesFromElements(
     <Route errorElement={<ErrorPage />}>
