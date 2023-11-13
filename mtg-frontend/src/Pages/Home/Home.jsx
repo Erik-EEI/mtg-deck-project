@@ -1,9 +1,10 @@
+import "./Home.css";
+import {HomeButton} from "../../Components/Home";
 const Home = () => {
     return (
-        <div>
-            <h1> Hello ! </h1>
+        <div id="home-container">
+            <HomeButton />
         </div>
     );
 };
-
 export default Home;

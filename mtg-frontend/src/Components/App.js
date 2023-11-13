@@ -1,5 +1,4 @@
 import {
-  Navigate,
   Route,
   RouterProvider,
   createBrowserRouter,
@@ -7,7 +6,7 @@ import {
 } from 'react-router-dom';
 import '../index.css';
 import Layout from "./Layout";
-import { Home, ErrorPage} from "../Pages";
+import { Home, ErrorPage } from "../Pages";
 
 const router = createBrowserRouter(createRoutesFromElements(
     <Route errorElement={<ErrorPage />}>
