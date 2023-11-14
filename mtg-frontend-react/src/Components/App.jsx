@@ -4,7 +4,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import '../../../mtg-frontend/src/index.css';
+import './App.css';
 import Layout from "./Layout/index.js";
 import { Home, ErrorPage } from "../Pages/index.js";
 
