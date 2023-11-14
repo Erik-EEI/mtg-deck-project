@@ -1,3 +1,9 @@
-import Layout from "./Layout.jsx";
+import Footer from './Footer';
+import Layout from './Layout';
+import Navbar from './Navbar';
 
-export default Layout;
+export {
+  Footer,
+  Layout,
+  Navbar
+};
