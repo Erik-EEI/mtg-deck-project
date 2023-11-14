@@ -4,7 +4,7 @@ const HomeButton = () => {
     const navigate = useNavigate();
 
     const handleOnClick = () => {
-        navigate("/dashboard");
+        navigate("/main");
     }
 
     return (
