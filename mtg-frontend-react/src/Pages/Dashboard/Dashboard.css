@@ -1,3 +1,28 @@
 #dashboard-container {
+    width: 100%;
+    height: calc(100vh - 20rem);
 
+    display: flex;
+    flex-direction: column;
+
+    padding: 10rem 1rem 5rem 1rem;
+
+    color: white;
+
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, 0.7);
+
+    & p {
+        margin: 1rem 5rem 0 5rem;
+        text-align: center;
+        font-family: 'Roboto Slab', serif;
+    }
+}
+
+#dashboard-cards-container {
+    display: flex;
+    flex-direction: row;
+    margin: 5rem 2rem 5rem 2rem;
 }

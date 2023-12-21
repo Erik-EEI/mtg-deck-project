@@ -1,8 +1,18 @@
 nav {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+
+  justify-content: space-between;
   align-items: center;
+
   height: 10rem;
+
+  padding: 0 5rem 0 5rem;
+
   background-color: var(--primary-off);
+}
+
+#navbar-logo {
+  height: 130%;
+  cursor: pointer;
 }
