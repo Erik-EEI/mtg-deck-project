@@ -1,6 +1,6 @@
 import "./Home.css";
 import {HomeButton} from "../../Components/Home/index.js";
-import { backgroundVideo } from '../../Assets';
+import { backgroundVideo, logoWhite } from '../../Assets';
 import {useEffect, useRef} from "react";
 const Home = () => {
     const videoRef = useRef(null);
@@ -23,7 +23,10 @@ const Home = () => {
                 <source src={backgroundVideo} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
+            <div id='home-center-container'>
+            <img src={logoWhite} id='home-logo'/>
             <HomeButton />
+            </div>
         </div>
     );
 };
