@@ -8,8 +8,8 @@ const HomeButton = () => {
     }
 
     return (
-        <button id="home-button" onClick={handleOnClick}>
-            START
+        <button id="home-button" className='btn' onClick={handleOnClick}>
+            <h1> ENTER </h1>
         </button>
     );
 };
