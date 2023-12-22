@@ -1,0 +1,21 @@
+.discover-card {
+    position: relative;
+    width: 200px;
+    height: 280px;
+    margin: 4rem;
+
+    max-width: 672px;
+    max-height: 936px;
+
+    border-radius: 3rem;
+    box-shadow: 0 0 5rem black;
+
+    z-index: 2;
+
+    transition: transform 300ms, box-shadow 300ms;
+}
+
+.discover-card:hover {
+    transform: scale(1.5);
+    box-shadow: 0 0 5rem #3a0000;
+}

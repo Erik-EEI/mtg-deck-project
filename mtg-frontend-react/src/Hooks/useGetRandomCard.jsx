@@ -14,6 +14,7 @@ const useGetRandomCard = () => {
     const query = useQuery({
         queryKey:['getRandomCard'],
         queryFn:() => fetchRandomCard(),
+        enabled: false,
     });
 
     return {
