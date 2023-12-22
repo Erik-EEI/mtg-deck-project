@@ -1,8 +1,12 @@
 import './DiscoverCardComponent.css';
 
-const DiscoverCardComponent = ({ cardData }) => {
+const DiscoverCardComponent = ({ cardData, onClick }) => {
     return (
-        <img src={cardData.image_uris.large} className='discover-card'/>
+        <img
+            src={cardData.image_uris.large}
+            className='discover-card'
+            onClick={() => onClick(cardData)}
+        />
     );
 };
 
