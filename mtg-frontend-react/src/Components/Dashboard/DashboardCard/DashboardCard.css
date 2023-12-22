@@ -25,6 +25,10 @@
 
 .dashboard-card-container:hover {
     box-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+
+    & .card-icon{
+        filter:drop-shadow(0 0 0.75rem crimson);
+    }
 }
 
 .card-background {
@@ -64,6 +68,7 @@
     width: 30%;
     height: 30%;
 
+    transition: all 500ms;
 }
 
 .card-main-text {
