@@ -1,7 +1,13 @@
 import './Dashboard.css';
 import {DashboardCard} from "../../Components/Dashboard/index.js";
 import {logoWhite} from "../../Assets/index.js";
-import {backgroundPicture} from "../../Assets/index.js";
+import {
+    backgroundPicture,
+    wizardHatIcon,
+    exploreIcon,
+    gearIcon,
+    viewIcon
+} from "../../Assets/index.js";
 
 const Dashboard = () => {
     return (
@@ -11,10 +17,10 @@ const Dashboard = () => {
             <p>Dive into the enchanting world of Magic: The Gathering with our comprehensive card database! </p>
             <p>Whether you're a seasoned Planeswalker or just starting your journey, our platform is your go-to destination for exploring and creating decks that will leave your opponents spellbound.</p>
             <div id='dashboard-cards-container'>
-                <DashboardCard icon={logoWhite} picture={backgroundPicture} mainText='TEST' subText='More text than the previous one for testing purposes' destinationUrl='/'/>
-                <DashboardCard icon={logoWhite} picture={backgroundPicture} mainText='TEST 2' subText='More text than the previous one for testing purposes' destinationUrl='/'/>
-                <DashboardCard icon={logoWhite} picture={backgroundPicture} mainText='TEST 3' subText='More text than the previous one for testing purposes' destinationUrl='/'/>
-                <DashboardCard icon={logoWhite} picture={backgroundPicture} mainText='TEST 4' subText='More text than the previous one for testing purposes' destinationUrl='/'/>
+                <DashboardCard icon={exploreIcon} picture={backgroundPicture} mainText='EXPLORE' subText='Discover the Magic Multiverse and delve into captivating card sets.' destinationUrl='/'/>
+                <DashboardCard icon={wizardHatIcon} picture={backgroundPicture} mainText='BUILD DECK' subText='Craft the perfect Magic deck that reflects your unique playstyle.' destinationUrl='/'/>
+                <DashboardCard icon={viewIcon} picture={backgroundPicture} mainText='VIEW DECKS' subText='Manage and showcase your winning strategies with ease.' destinationUrl='/'/>
+                <DashboardCard icon={gearIcon} picture={backgroundPicture} mainText='SETTINGS' subText='Personalize your Magic experience and tailor the platform to your preferences.' destinationUrl='/'/>
             </div>
         </div>
     );

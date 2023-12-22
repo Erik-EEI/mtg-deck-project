@@ -11,6 +11,7 @@ const DashboardCard = ({ icon, picture, mainText, subText, destinationUrl}) => {
 
     return (
         <div className='dashboard-card-container' onClick={handleOnClick}>
+            <img src={picture} alt='Card Background' className='card-background' />
             <div className='card-content'>
                 <img src={icon} alt='Card Icon' className='card-icon' />
                 <h2 className='card-main-text'>{mainText}</h2>
@@ -20,5 +21,4 @@ const DashboardCard = ({ icon, picture, mainText, subText, destinationUrl}) => {
     );
 };
 
-    //        <img src={picture} alt='Card Background' className='card-background' />
 export default DashboardCard;
