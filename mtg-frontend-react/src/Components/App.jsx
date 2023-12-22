@@ -5,7 +5,18 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 import Layout from "./Layout/Layout/index.js";
-import {Home, ErrorPage, Dashboard, Discover} from "../Pages/index.js";
+import { Home, ErrorPage, Dashboard, Discover } from "../Pages/index.js";
+import { QueryClient,QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            enabled: true,
+            refetchOnWindowFocus: false,
+            staleTime: Infinity,
+        },
+    },
+});
 
 const router = createBrowserRouter(createRoutesFromElements(
     <Route errorElement={<ErrorPage />}>
@@ -21,7 +32,9 @@ const router = createBrowserRouter(createRoutesFromElements(
 
 const App = () => {
   return (
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+      </QueryClientProvider>
   );
 };
 
