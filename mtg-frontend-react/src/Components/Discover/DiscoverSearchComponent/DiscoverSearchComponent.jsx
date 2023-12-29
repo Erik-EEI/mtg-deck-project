@@ -54,12 +54,14 @@ const DiscoverSearchComponent = ({setResults}) => {
             placeholder='Enter Name'
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            className='discover-name-search-field'
             />
             <input
                 type='text'
                 placeholder='Enter Type'
                 value={typeSearchTerm}
                 onChange={(e) => setTypeSearchTerm(e.target.value)}
+                className='discover-type-search-field'
             />
             <p> COLOR </p>
             <section className={'discover-search-color-container'}>
