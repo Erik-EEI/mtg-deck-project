@@ -16,6 +16,9 @@ const CardDetailModal = ({ isModalVisible,handleOnKeyClose,handleOnClick,cardDat
         return 'Loading'
     }
 
+    //TODO Conditional modal for cards with no text
+    //TODO Implement function that replaces color codes with mana emblems
+
     return (
         <dialog
             className={'card-data-modal'}
@@ -42,6 +45,13 @@ const CardDetailModal = ({ isModalVisible,handleOnKeyClose,handleOnClick,cardDat
                 </div>
                 <div className={'card-modal-sub-info'}>
                     <p className={'card-data-modal-left'}>{cardData.oracle_text}</p>
+                    <section className={'card-data-modal-right'}>
+                        <p>Released : {cardData.released_at}</p>
+                        <p>Set : {cardData.set_name}</p>
+                        <p>Set type : {cardData.set_type}</p>
+                        <p>Rarity : {cardData.rarity}</p>
+                        <p>{cardData.flavor_text}</p>
+                    </section>
                 </div>
             </div>
         </dialog>
