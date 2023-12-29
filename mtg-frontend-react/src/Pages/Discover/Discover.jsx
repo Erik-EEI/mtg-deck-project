@@ -3,8 +3,8 @@ import {useGetRandomCard} from "../../Hooks/index.js";
 import {CardDetailModal, DiscoverCardComponent, DiscoverSearchComponent} from "../../Components/Discover/index.js";
 import {useState} from "react";
 const Discover = () => {
-    const { randomCardData, isRandomCardLoading, isRandomCardError, reFetchRandomCard } = useGetRandomCard();
     const [ cardToReview, setCardToReview ] = useState(null);
+    const [ allCardData, setAllCardData ] = useState( null );
     const [ isModalVisible, setIsModalVisible ] = useState(false);
 
     const handleOnClick = ( cardData ) => {
@@ -21,15 +21,30 @@ const Discover = () => {
             setIsModalVisible(false);
         }
     };
+
+    const displayCardPage = ( pageNo ) => {
+        const cards = [];
+
+        //TODO Raise card/page to constant
+        for(let i = 0; i < 6; i++ ){
+            const cardIndex = ((pageNo - 1) * 6) + i;
+
+            if(!allCardData[cardIndex]) break;
+
+            cards.push(<DiscoverCardComponent key={i} cardData={allCardData[ cardIndex ]} onClick={ handleOnClick }/>)
+        }
+
+        return cards;
+    }
     //TODO Implement loading card animation
     return (
         <>
         <div id='discover-page-container' className={isModalVisible ? 'blur' : ''}>
             <div id='discover-search-container'>
-                <DiscoverSearchComponent fetchRandomCard={reFetchRandomCard} />
+                <DiscoverSearchComponent setResults={setAllCardData} />
             </div>
             <div id='discover-cards-container'>
-                {randomCardData && <DiscoverCardComponent cardData={randomCardData} onClick={handleOnClick}/>}
+                { allCardData && displayCardPage(1)}
             </div>
         </div>
             <CardDetailModal

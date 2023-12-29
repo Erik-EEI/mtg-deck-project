@@ -1,11 +1,24 @@
 import './DiscoverSearchComponent.css';
-import {useState} from "react";
-import {useGetSymbology} from "../../../Hooks/index.js";
+import {useEffect, useState} from "react";
+import {useGetRandomCard, useGetSymbology, useSearchCards} from "../../../Hooks/index.js";
 import {ColorSearchOption} from "../index.js";
-const DiscoverSearchComponent = ({ fetchRandomCard }) => {
+const DiscoverSearchComponent = ({setResults}) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchColors, setSearchColors] = useState([]);
+    const [ displaySearchResults, setDisplaySearchResults ] = useState(true);
     const { symbologyData, isSymbologyError, isSymbologyLoading } = useGetSymbology()
+    const { resultCardsData, isResultsLoading, isResultsError, reFetchSearchCards } = useSearchCards( searchTerm, searchColors );
+    const { randomCardData, isRandomCardLoading, isRandomCardError, reFetchRandomCard } = useGetRandomCard();
+
+    useEffect(() => {
+
+        if( resultCardsData && displaySearchResults ) {
+            setResults(resultCardsData.data);
+        } else if( randomCardData && !displaySearchResults ){
+            setResults([randomCardData]);
+        }
+
+    }, [ resultCardsData, randomCardData]);
 
     const generateColorPickers = () => {
         const colors = ["{W}","{U}","{B}","{R}", "{G}"];
@@ -14,6 +27,20 @@ const DiscoverSearchComponent = ({ fetchRandomCard }) => {
             const icon = symbologyData.data.find((symbolObject) => symbolObject.symbol === colorCode).svg_uri;
             return <ColorSearchOption key={colorCode} colorIcon={icon} colorText={colorCode} selectedValues={searchColors} setSelectedValues={setSearchColors} />
         })
+    }
+
+    const handleSearchButtonClick = () => {
+        if( searchTerm === '' && searchColors.length === 0){
+            console.log('Empty')
+        } else {
+            setDisplaySearchResults(true);
+            reFetchSearchCards();
+        }
+    }
+
+    const handleRandomButtonClick = () => {
+        setDisplaySearchResults(false);
+        reFetchRandomCard();
     }
 
     return (
@@ -29,7 +56,8 @@ const DiscoverSearchComponent = ({ fetchRandomCard }) => {
             <section className={'discover-search-color-container'}>
             {symbologyData && generateColorPickers() }
             </section>
-            <button onClick={fetchRandomCard}> Surprise me! </button>
+            <button onClick={ handleRandomButtonClick }> Surprise me! </button>
+            <button onClick={ handleSearchButtonClick }> SEARCH </button>
         </div>
     );
 };

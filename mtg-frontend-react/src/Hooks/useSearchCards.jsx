@@ -1,8 +1,24 @@
 import {useQuery} from '@tanstack/react-query';
 
-const fetchResults = async () => {
+const buildURL = ( searchTerm, colorArray ) => {
+    const searchParams = new URLSearchParams();
+
+    if ( searchTerm ) {
+        searchParams.set('name', searchTerm);
+    }
+    if (colorArray.length > 0) {
+        searchParams.set('color', colorArray.join(','));
+    }
+
+    let queryString = searchParams.toString();
+    queryString = queryString.replaceAll('&','+');
+    console.log(queryString)
+    return `https://api.scryfall.com/cards/search?q=${queryString}`;
+}
+
+const fetchResults = async ( url ) => {
     try {
-        const response = await fetch(`https://api.scryfall.com/cards/random`);
+        const response = await fetch(url);
         return await response.json();
     } catch (err) {
         console.log(err);
@@ -10,18 +26,18 @@ const fetchResults = async () => {
 };
 //TODO Wrap fetch to check localstorage first
 
-const useSearchCards = () => {
+const useSearchCards = ( searchTerm, colorArray ) => {
     const query = useQuery({
-        queryKey:['getRandomCard'],
-        queryFn:() => fetchResults(),
+        queryKey:['searchCards'],
+        queryFn:() => fetchResults( buildURL(searchTerm,colorArray) ),
         enabled: false,
     });
 
     return {
-        randomCardData: query.data,
-        isRandomCardLoading: query.isFetching,
-        isRandomCardError: query.isError,
-        reFetchRandomCard: query.refetch,
+        resultCardsData: query.data,
+        isResultsLoading: query.isFetching,
+        isResultsError: query.isError,
+        reFetchSearchCards: query.refetch,
     };
 };
 
