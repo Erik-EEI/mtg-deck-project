@@ -2,7 +2,7 @@ import './DiscoverSearchComponent.css';
 import {useEffect, useState} from "react";
 import {useGetRandomCard, useGetSymbology, useSearchCards} from "../../../Hooks/index.js";
 import {ColorSearchOption, ToughnessSelectorComponent} from "../index.js";
-const DiscoverSearchComponent = ({setResults}) => {
+const DiscoverSearchComponent = ({setResults, setIsLoading}) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchColors, setSearchColors] = useState([]);
     const [typeSearchTerm, setTypeSearchTerm] = useState('');
@@ -17,8 +17,10 @@ const DiscoverSearchComponent = ({setResults}) => {
 
         if( resultCardsData && displaySearchResults ) {
             setResults(resultCardsData.data);
+            setIsLoading(false);
         } else if( randomCardData && !displaySearchResults ){
             setResults([randomCardData]);
+            setIsLoading(false);
         }
 
     }, [ resultCardsData, randomCardData]);
@@ -36,12 +38,14 @@ const DiscoverSearchComponent = ({setResults}) => {
         if( searchTerm === '' && searchColors.length === 0){
             console.log('Empty')
         } else {
+            setIsLoading( true );
             setDisplaySearchResults(true);
             reFetchSearchCards();
         }
     }
 
     const handleRandomButtonClick = () => {
+        setIsLoading( true );
         setDisplaySearchResults(false);
         reFetchRandomCard();
     }

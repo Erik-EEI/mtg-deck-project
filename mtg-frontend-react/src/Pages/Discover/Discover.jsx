@@ -1,10 +1,16 @@
 import './Discover.css';
-import {CardDetailModal, DiscoverCardComponent, DiscoverSearchComponent} from "../../Components/Discover/index.js";
+import {
+    CardDetailModal,
+    DiscoverCardComponent,
+    DiscoverSearchComponent,
+    SearchLoadingAnimation
+} from "../../Components/Discover/index.js";
 import {useState} from "react";
 import {sadWizardLogo} from "../../Assets/index.js";
 const Discover = () => {
-    const [ cardToReview, setCardToReview ] = useState(null);
     const [ allCardData, setAllCardData ] = useState( null );
+    const [ cardToReview, setCardToReview ] = useState(null );
+    const [ isLoading, setIsLoading ] = useState( false );
     const [ isModalVisible, setIsModalVisible ] = useState(false);
 
     const handleOnClick = ( cardData ) => {
@@ -47,10 +53,10 @@ const Discover = () => {
         <>
         <div id='discover-page-container' className={isModalVisible ? 'blur' : ''}>
             <div id='discover-search-container'>
-                <DiscoverSearchComponent setResults={setAllCardData} />
+                <DiscoverSearchComponent setResults={setAllCardData} setIsLoading={setIsLoading} />
             </div>
             <div id='discover-cards-container'>
-                { (allCardData || allCardData === undefined) && displayCardPage(1) }
+                {isLoading ? <SearchLoadingAnimation /> : (allCardData || allCardData === undefined) && displayCardPage(1) }
             </div>
         </div>
             <CardDetailModal

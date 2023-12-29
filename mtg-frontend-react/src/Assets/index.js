@@ -7,6 +7,7 @@ import gearIcon from './icons/gearIcon.svg';
 import viewIcon from './icons/viewIcon.svg';
 import exploreIcon from './icons/exploreIcon.svg';
 import sadWizardLogo from './response/sad_wizard.png';
+import searchingWizardLogo from './response/searching-wizard.png';
 
 export {
     backgroundVideo,
@@ -17,5 +18,6 @@ export {
     gearIcon,
     viewIcon,
     exploreIcon,
-    sadWizardLogo
+    sadWizardLogo,
+    searchingWizardLogo
 }
