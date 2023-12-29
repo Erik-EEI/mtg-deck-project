@@ -57,7 +57,8 @@ const Discover = () => {
                 cardData={cardToReview}
                 isModalVisible={isModalVisible}
                 handleOnClick={handleCloseModalClick}
-                handleOnKeyClose={listenForEscapeKey} />
+                handleOnKeyClose={listenForEscapeKey}
+            />
         </>
     );
 };

@@ -24,16 +24,16 @@ const ToughnessSelectorComponent = ({ setPowerPreference, setToughnessPreference
     return (
         <div>
             <label> POWER </label>
-                <MultiRangeSlider
-                    min={0}
-                    max={20}
-                    step={1}
-                    minValue={minPower}
-                    maxValue={maxPower}
-                    onInput={(e) => {
-                        handlePowerSliderInput(e);
-                    }}
-                    className={'toughness-selector-slider'}
+            <MultiRangeSlider
+                min={0}
+                max={20}
+                step={1}
+                minValue={minPower}
+                maxValue={maxPower}
+                onInput={(e) => {
+                    handlePowerSliderInput(e);
+                }}
+                className={'toughness-selector-slider'}
                 />
             <label> TOUGHNESS </label>
             <MultiRangeSlider

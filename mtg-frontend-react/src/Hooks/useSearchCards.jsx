@@ -1,6 +1,6 @@
 import {useQuery} from '@tanstack/react-query';
 
-const buildURL = ( searchTerm, colorArray, powerPreference, toughnessPreference ) => {
+const buildURL = ( searchTerm, colorArray, powerPreference, toughnessPreference, typeSearchTerm ) => {
     const searchParams = new URLSearchParams();
 
     if ( searchTerm ) {
@@ -8,6 +8,9 @@ const buildURL = ( searchTerm, colorArray, powerPreference, toughnessPreference 
     }
     if (colorArray.length > 0) {
         searchParams.set('color', colorArray.join(','));
+    }
+    if(typeSearchTerm !== ''){
+        searchParams.set('type', typeSearchTerm);
     }
     let queryString = searchParams.toString();
 
@@ -42,10 +45,10 @@ const fetchResults = async ( url ) => {
 };
 //TODO Wrap fetch to check localstorage first
 
-const useSearchCards = ( searchTerm, colorArray, powerPreference, toughnessPreference ) => {
+const useSearchCards = ( searchTerm, colorArray, powerPreference, toughnessPreference, typeSearchTerm ) => {
     const query = useQuery({
         queryKey:['searchCards'],
-        queryFn:() => fetchResults( buildURL(searchTerm,colorArray,powerPreference,toughnessPreference) ),
+        queryFn:() => fetchResults( buildURL(searchTerm,colorArray,powerPreference,toughnessPreference, typeSearchTerm) ),
         enabled: false,
     });
 

@@ -5,12 +5,13 @@ import {ColorSearchOption, ToughnessSelectorComponent} from "../index.js";
 const DiscoverSearchComponent = ({setResults}) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchColors, setSearchColors] = useState([]);
+    const [typeSearchTerm, setTypeSearchTerm] = useState('');
     const [powerPreference, setPowerPreference] = useState([0,20]);
     const [toughnessPreference, setToughnessPreference] = useState([0,20]);
     const [ displaySearchResults, setDisplaySearchResults ] = useState(true);
     const { symbologyData, isSymbologyError, isSymbologyLoading } = useGetSymbology()
     const { randomCardData, isRandomCardLoading, isRandomCardError, reFetchRandomCard } = useGetRandomCard();
-    const { resultCardsData, isResultsLoading, isResultsError, reFetchSearchCards } = useSearchCards( searchTerm, searchColors, powerPreference, toughnessPreference );
+    const { resultCardsData, isResultsLoading, isResultsError, reFetchSearchCards } = useSearchCards( searchTerm, searchColors, powerPreference, toughnessPreference, typeSearchTerm );
 
     useEffect(() => {
 
@@ -53,6 +54,12 @@ const DiscoverSearchComponent = ({setResults}) => {
             placeholder='Enter Name'
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <input
+                type='text'
+                placeholder='Enter Type'
+                value={typeSearchTerm}
+                onChange={(e) => setTypeSearchTerm(e.target.value)}
             />
             <p> COLOR </p>
             <section className={'discover-search-color-container'}>
