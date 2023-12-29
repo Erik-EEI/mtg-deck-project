@@ -6,6 +6,7 @@ import wizardHatIcon from './icons/wizardHatIcon.svg';
 import gearIcon from './icons/gearIcon.svg';
 import viewIcon from './icons/viewIcon.svg';
 import exploreIcon from './icons/exploreIcon.svg';
+import sadWizardLogo from './response/sad_wizard.png';
 
 export {
     backgroundVideo,
@@ -15,5 +16,6 @@ export {
     wizardHatIcon,
     gearIcon,
     viewIcon,
-    exploreIcon
+    exploreIcon,
+    sadWizardLogo
 }

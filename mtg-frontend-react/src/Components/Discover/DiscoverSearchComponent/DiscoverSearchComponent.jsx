@@ -1,14 +1,16 @@
 import './DiscoverSearchComponent.css';
 import {useEffect, useState} from "react";
 import {useGetRandomCard, useGetSymbology, useSearchCards} from "../../../Hooks/index.js";
-import {ColorSearchOption} from "../index.js";
+import {ColorSearchOption, ToughnessSelectorComponent} from "../index.js";
 const DiscoverSearchComponent = ({setResults}) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchColors, setSearchColors] = useState([]);
+    const [powerPreference, setPowerPreference] = useState([0,20]);
+    const [toughnessPreference, setToughnessPreference] = useState([0,20]);
     const [ displaySearchResults, setDisplaySearchResults ] = useState(true);
     const { symbologyData, isSymbologyError, isSymbologyLoading } = useGetSymbology()
-    const { resultCardsData, isResultsLoading, isResultsError, reFetchSearchCards } = useSearchCards( searchTerm, searchColors );
     const { randomCardData, isRandomCardLoading, isRandomCardError, reFetchRandomCard } = useGetRandomCard();
+    const { resultCardsData, isResultsLoading, isResultsError, reFetchSearchCards } = useSearchCards( searchTerm, searchColors, powerPreference, toughnessPreference );
 
     useEffect(() => {
 
@@ -56,6 +58,8 @@ const DiscoverSearchComponent = ({setResults}) => {
             <section className={'discover-search-color-container'}>
             {symbologyData && generateColorPickers() }
             </section>
+            <p> POWER / TOUGHNESS </p>
+            <ToughnessSelectorComponent setPowerPreference={setPowerPreference} setToughnessPreference={setToughnessPreference} />
             <button onClick={ handleRandomButtonClick }> Surprise me! </button>
             <button onClick={ handleSearchButtonClick }> SEARCH </button>
         </div>

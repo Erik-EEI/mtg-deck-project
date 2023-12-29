@@ -1,7 +1,7 @@
 import './Discover.css';
-import {useGetRandomCard} from "../../Hooks/index.js";
 import {CardDetailModal, DiscoverCardComponent, DiscoverSearchComponent} from "../../Components/Discover/index.js";
 import {useState} from "react";
+import {sadWizardLogo} from "../../Assets/index.js";
 const Discover = () => {
     const [ cardToReview, setCardToReview ] = useState(null);
     const [ allCardData, setAllCardData ] = useState( null );
@@ -23,6 +23,12 @@ const Discover = () => {
     };
 
     const displayCardPage = ( pageNo ) => {
+        if( allCardData === undefined ) return (
+            <div className='no-cards-found-container'>
+                <img src={sadWizardLogo} alt='Sorry, no cards found'/>
+                <p>Sorry, no cards found!</p>
+            </div>
+        )
         const cards = [];
 
         //TODO Raise card/page to constant
@@ -44,7 +50,7 @@ const Discover = () => {
                 <DiscoverSearchComponent setResults={setAllCardData} />
             </div>
             <div id='discover-cards-container'>
-                { allCardData && displayCardPage(1)}
+                { (allCardData || allCardData === undefined) && displayCardPage(1) }
             </div>
         </div>
             <CardDetailModal
