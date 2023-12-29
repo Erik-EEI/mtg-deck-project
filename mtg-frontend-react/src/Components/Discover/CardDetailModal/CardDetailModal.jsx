@@ -1,5 +1,6 @@
 import './CardDetailModal.css';
 import {useEffect, useRef} from "react";
+import {cardPlaceholder} from "../../../Assets/index.js";
 
 const CardDetailModal = ({ isModalVisible,handleOnKeyClose,handleOnClick,cardData }) => {
     const dialogRef = useRef(null);
@@ -11,6 +12,14 @@ const CardDetailModal = ({ isModalVisible,handleOnKeyClose,handleOnClick,cardDat
             dialogRef.current?.showModal();
         }
     }, [isModalVisible]);
+
+    const provideCardImage = () => {
+        if(cardData.highres_image){
+            return cardData.image_uris !== undefined ? cardData.image_uris.art_crop : cardData.card_faces[0].image_uris.art_crop;
+        }else {
+            return cardPlaceholder;
+        }
+    }
 
     if( !cardData ) {
         return 'Loading'
@@ -27,7 +36,7 @@ const CardDetailModal = ({ isModalVisible,handleOnKeyClose,handleOnClick,cardDat
         >
             <button className={'modal-close-button'} onClick={handleOnClick}>X</button>
             <div className={'card-modal-content'}>
-                <img src={cardData.image_uris.art_crop} className={'card-modal-art'} />
+                <img src={provideCardImage()} className={'card-modal-art'} />
                 <h1>{cardData.name}</h1>
                 <div className={'card-modal-main-info'}>
                     <div>
