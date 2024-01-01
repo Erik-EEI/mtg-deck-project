@@ -2,7 +2,7 @@
     position: relative;
     width: 200px;
     height: 280px;
-    margin: 4rem;
+    margin: 0.5rem 4rem 0.5rem 4rem;
 }
 
 .discover-card {
@@ -19,6 +19,7 @@
 .discover-card:hover {
     transform: scale(1.5);
     box-shadow: 0 0 5rem #3a0000;
+    z-index: 4;
 }
 
 .placeholder-overlay {

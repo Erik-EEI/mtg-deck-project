@@ -2,7 +2,7 @@ import './DiscoverSearchComponent.css';
 import {useEffect, useState} from "react";
 import {useGetRandomCard, useGetSymbology, useSearchCards} from "../../../Hooks/index.js";
 import {ColorSearchOption, ToughnessSelectorComponent} from "../index.js";
-const DiscoverSearchComponent = ({setResults, setIsLoading}) => {
+const DiscoverSearchComponent = ({setResults, setIsLoading, setPage}) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchColors, setSearchColors] = useState([]);
     const [typeSearchTerm, setTypeSearchTerm] = useState('');
@@ -41,6 +41,7 @@ const DiscoverSearchComponent = ({setResults, setIsLoading}) => {
             setIsLoading( true );
             setDisplaySearchResults(true);
             reFetchSearchCards();
+            setPage(1);
         }
     }
 

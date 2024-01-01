@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 
 const DiscoverCardComponent = ({ cardData, onClick }) => {
     const [image, setImage] = useState(null);
+    const [isLoadingImage, setIsLoadingImage] = useState(false);
 
     useEffect(() => {
         setImage(provideCardImage());
-    }, []);
+    }, [cardData]);
 
     const provideCardImage = () => {
         if (cardData.highres_image) {
@@ -17,6 +18,10 @@ const DiscoverCardComponent = ({ cardData, onClick }) => {
         }
     };
 
+    if(isLoadingImage){
+        return <p>LOADING IMAGE</p>
+    }
+
     return (
         <div className='card-container'>
             {image !== cardPlaceholder && (
@@ -25,6 +30,8 @@ const DiscoverCardComponent = ({ cardData, onClick }) => {
                     className='discover-card'
                     onClick={() => onClick(cardData)}
                     alt={cardData.name}
+                    onLoadStart={() => setIsLoadingImage( true )}
+                    onLoadedData={() => setIsLoadingImage( false )}
                 />
             )}
             {image === cardPlaceholder && (

@@ -1,0 +1,33 @@
+.discover-page-selector-container{
+    display: flex;
+    flex-direction: row;
+
+    width: 10rem;
+    height: 3rem;
+
+    padding: 1rem 1rem 1rem 1rem;
+    margin: 1rem 0 1rem 0;
+
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: rgba(24, 0, 0, 0.88);
+    color: white;
+
+    border-radius: 2rem;
+
+}
+.page-selector-button{
+    color: white;
+    background-color: transparent;
+
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    border-radius: 1rem;
+
+    cursor: pointer;
+}
+
+.disabled-button {
+    color: black;
+    cursor: default;
+}

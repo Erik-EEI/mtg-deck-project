@@ -1,17 +1,25 @@
 import './Discover.css';
 import {
     CardDetailModal,
-    DiscoverCardComponent,
+    DiscoverCardComponent, DiscoverPageSelector,
     DiscoverSearchComponent,
     SearchLoadingAnimation
 } from "../../Components/Discover/index.js";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {sadWizardLogo} from "../../Assets/index.js";
 const Discover = () => {
     const [ allCardData, setAllCardData ] = useState( null );
     const [ cardToReview, setCardToReview ] = useState(null );
     const [ isLoading, setIsLoading ] = useState( false );
     const [ isModalVisible, setIsModalVisible ] = useState(false);
+    const [ currentPage, setCurrentPage ] = useState(0);
+    const [ cardsToDisplay, setCardsToDisplay ] = useState(null);
+
+    useEffect(() => {
+        if(allCardData || allCardData === undefined) {
+            setCardsToDisplay( generateCardsForPage(currentPage) );
+        }
+    }, [currentPage, allCardData]);
 
     const handleOnClick = ( cardData ) => {
         if( cardData ) setCardToReview( cardData );
@@ -28,7 +36,7 @@ const Discover = () => {
         }
     };
 
-    const displayCardPage = ( pageNo ) => {
+    const generateCardsForPage = ( pageNo ) => {
         if( allCardData === undefined ) return (
             <div className='no-cards-found-container'>
                 <img src={sadWizardLogo} alt='Sorry, no cards found'/>
@@ -40,12 +48,10 @@ const Discover = () => {
         //TODO Raise card/page to constant
         for(let i = 0; i < 6; i++ ){
             const cardIndex = ((pageNo - 1) * 6) + i;
-
             if(!allCardData[cardIndex]) break;
 
             cards.push(<DiscoverCardComponent key={i} cardData={allCardData[ cardIndex ]} onClick={ handleOnClick }/>)
         }
-
         return cards;
     }
     //TODO Implement loading card animation
@@ -53,11 +59,15 @@ const Discover = () => {
         <>
         <div id='discover-page-container' className={isModalVisible ? 'blur' : ''}>
             <div id='discover-search-container'>
-                <DiscoverSearchComponent setResults={setAllCardData} setIsLoading={setIsLoading} />
+                <DiscoverSearchComponent setResults={setAllCardData} setIsLoading={setIsLoading} setPage={setCurrentPage} />
             </div>
-            <div id='discover-cards-container'>
-                {isLoading ? <SearchLoadingAnimation /> : (allCardData || allCardData === undefined) && displayCardPage(1) }
-            </div>
+            <section className={'discover-result-area-container'}>
+                <div id='discover-cards-container'>
+                    {isLoading ? <SearchLoadingAnimation /> : cardsToDisplay }
+                </div>
+                {allCardData && <DiscoverPageSelector currentPage={currentPage} setPage={setCurrentPage} allResultCount={allCardData.length}/>}
+            </section>
+
         </div>
             <CardDetailModal
                 cardData={cardToReview}
