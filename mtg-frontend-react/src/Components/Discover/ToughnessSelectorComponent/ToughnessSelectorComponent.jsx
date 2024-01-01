@@ -22,7 +22,7 @@ const ToughnessSelectorComponent = ({ setPowerPreference, setToughnessPreference
 
 
     return (
-        <div>
+        <div className={'toughness-selector-container'}>
             <label> POWER </label>
             <MultiRangeSlider
                 min={0}

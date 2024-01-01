@@ -1,5 +1,8 @@
+.toughness-selector-container{
+    width: 100%;
+}
 .toughness-selector-slider {
-    width: 15vw;
+   /* width: 100%;*/
 }
 .multi-range-slider * {
     box-sizing: border-box;
@@ -9,7 +12,7 @@
 .multi-range-slider {
     display: flex;
     position: relative;
-    border: solid 1px gray;
+    border: solid 1px rgb(128, 128, 128);
     border-radius: 10px;
     padding: 20px 10px;
     box-shadow: 1px 1px 4px black;
@@ -146,7 +149,6 @@
 
 .multi-range-slider .ruler .ruler-sub-rule {
     border-left: solid 1px;
-    /* border-bottom: solid 1px; */
     display: flex;
     flex-grow: 1;
     flex-shrink: 1;
@@ -164,7 +166,6 @@
     padding: 0px;
     margin-top: 10px;
     margin-bottom: -20px;
-    /* display: none; */
 }
 .multi-range-slider .label {
     font-size: 80%;
