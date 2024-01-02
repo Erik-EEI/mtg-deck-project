@@ -27,7 +27,7 @@ const router = createBrowserRouter(createRoutesFromElements(
         <Route path={'/discover'} element={<Layout />}>
             <Route index element={<Discover />}/>
         </Route>
-        <Route path={'/build'} element={<Layout />}>
+        <Route path={'/build/:name'} element={<Layout />}>
             <Route index element={<DeckBuilder />}/>
         </Route>
     </Route>,
