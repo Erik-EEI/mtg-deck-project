@@ -3,6 +3,7 @@ import {ColorSearchOption, SearchFieldComponent} from "../../Discover/index.js";
 import UseGetSymbology from "../../../Hooks/useGetSymbology.jsx";
 import {useEffect, useState} from "react";
 import {useSearchCards} from "../../../Hooks/index.js";
+import {DeckBuilderCardSelector} from "../index.js";
 
 const DeckBuilderSearchComponent = ({setResults, setIsLoading, setPage}) => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -37,7 +38,7 @@ const DeckBuilderSearchComponent = ({setResults, setIsLoading, setPage}) => {
             setPage(1);
         }
     }
-
+//TODO Elevate constants, check ? on deckBuilderCardSelector props
     return (
         <div className={'deck-builder-search-component'}>
             <section className={'deck-builder-search-controls'}>
@@ -51,7 +52,9 @@ const DeckBuilderSearchComponent = ({setResults, setIsLoading, setPage}) => {
                     onClick={handleSearchButtonClick}
                     > SEARCH </button>
             </section>
-            <section className={'deck-builder-search-results'}></section>
+            <section className={'deck-builder-search-results'}>
+                <DeckBuilderCardSelector cardArray={resultCardsData?.data} isLoading={isResultsLoading}/>
+            </section>
         </div>
     );
 };

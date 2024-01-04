@@ -6,27 +6,27 @@ const buildURL = ( searchTerm, colorArray, powerPreference, toughnessPreference,
     if ( searchTerm ) {
         searchParams.set('name', searchTerm);
     }
-    if (colorArray.length > 0) {
+    if (colorArray && colorArray.length > 0) {
         searchParams.set('color', colorArray.join(','));
     }
-    if(typeSearchTerm !== ''){
+    if(typeSearchTerm && typeSearchTerm !== ''){
         searchParams.set('type', typeSearchTerm);
     }
     let queryString = searchParams.toString();
 
-    if( powerPreference[0] !== 0){
+    if(powerPreference && powerPreference[0] !== 0){
         queryString += encodeURI(`+pow>=${ powerPreference[0]}`);
     }
     //TODO Implement global max power for cards
-    if( powerPreference[1] !== 20 ){
+    if(powerPreference && powerPreference[1] !== 20 ){
         queryString += encodeURI(`+pow<=${ powerPreference[1]}`);
     }
 
-    if( toughnessPreference[0] !== 0 ){
+    if(toughnessPreference && toughnessPreference[0] !== 0 ){
         queryString += encodeURI(`+tou>=${ toughnessPreference[0] }`);
     }
 
-    if( toughnessPreference[1] !== 20 ){
+    if(toughnessPreference && toughnessPreference[1] !== 20 ){
         queryString += encodeURI(`+tou<=${ toughnessPreference[1] }`);
     }
 

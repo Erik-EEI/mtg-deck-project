@@ -26,5 +26,8 @@
 
     align-items: center;
     justify-content: space-evenly;
-
+}
+.deck-builder-search-results{
+    width: 75%;
+    height: 100%;
 }

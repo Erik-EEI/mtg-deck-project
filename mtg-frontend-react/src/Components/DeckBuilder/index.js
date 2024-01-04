@@ -1,3 +1,4 @@
-import DeckBuilderSearchComponent from "./DeckBuilderSearchComponent/index.js";
+import DeckBuilderSearchComponent from "./DeckBuilderSearchComponent/index.js"
+import DeckBuilderCardSelector from "./DeckBuilderCardSelector/index.js";
 
-export { DeckBuilderSearchComponent }
+export { DeckBuilderSearchComponent, DeckBuilderCardSelector }
