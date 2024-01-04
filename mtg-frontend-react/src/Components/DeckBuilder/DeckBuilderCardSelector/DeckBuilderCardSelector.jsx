@@ -17,11 +17,11 @@ const DeckBuilderCardSelector = ({ cardArray, isLoading }) => {
         const cards = [];
 
         //TODO Raise card/page to constant
-        for(let i = 0; i < 6; i++ ){
-            const cardIndex = ((currentPage - 1) * 6) + i;
+        for(let i = 0; i < 3; i++ ){
+            const cardIndex = ((currentPage - 1) * 3) + i;
             if(!cardArray[cardIndex]) break;
 
-            cards.push(<p>{cardArray [ cardIndex ].name}</p>)
+            cards.push(<DiscoverCardComponent key={cardIndex} cardData={cardArray[cardIndex]} onClick={()=>console.log('clicky')}/> )
         }
         return cards;
     }
