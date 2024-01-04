@@ -1,7 +1,7 @@
 import './DiscoverSearchComponent.css';
 import {useEffect, useState} from "react";
 import {useGetRandomCard, useGetSymbology, useSearchCards} from "../../../Hooks/index.js";
-import {ColorSearchOption, ToughnessSelectorComponent} from "../index.js";
+import {ColorSearchOption, SearchFieldComponent, ToughnessSelectorComponent} from "../index.js";
 const DiscoverSearchComponent = ({setResults, setIsLoading, setPage}) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchColors, setSearchColors] = useState([]);
@@ -50,27 +50,15 @@ const DiscoverSearchComponent = ({setResults, setIsLoading, setPage}) => {
         setDisplaySearchResults(false);
         reFetchRandomCard();
     }
-
+//TODO Include power/toughness change to reset state
     return (
         <div id='discover-search-component-container'>
             <h2>SEARCH</h2>
-            <input
-            type='text'
-            placeholder='Enter Name'
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className='discover-name-search-field'
-            />
-            <input
-                type='text'
-                placeholder='Enter Type'
-                value={typeSearchTerm}
-                onChange={(e) => setTypeSearchTerm(e.target.value)}
-                className='discover-type-search-field'
-            />
+            <SearchFieldComponent onChange={setSearchTerm} value={searchTerm} placeholderText={'Enter Name'}/>
+            <SearchFieldComponent onChange={setTypeSearchTerm} value={typeSearchTerm} placeholderText={'Enter Type'}/>
             <p> COLOR </p>
             <section className={'discover-search-color-container'}>
-            {symbologyData && generateColorPickers() }
+            { symbologyData && generateColorPickers() }
             </section>
             <p> POWER / TOUGHNESS </p>
             <ToughnessSelectorComponent setPowerPreference={setPowerPreference} setToughnessPreference={setToughnessPreference} />

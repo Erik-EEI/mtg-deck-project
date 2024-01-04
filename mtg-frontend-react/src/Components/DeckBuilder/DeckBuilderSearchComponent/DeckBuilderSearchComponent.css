@@ -1,0 +1,30 @@
+.deck-builder-search-component{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.deck-builder-search-controls{
+    width: 25%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: -1px 4px 53px 17px rgba(0,0,0,0.75);
+}
+
+.deck-builder-search-color-container{
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: space-evenly;
+
+}

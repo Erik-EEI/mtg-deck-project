@@ -5,6 +5,7 @@ import ColorSearchOption from "./ColorSearchOption/index.js";
 import ToughnessSelectorComponent from "./ToughnessSelectorComponent/index.js";
 import SearchLoadingAnimation from "./SearchLoadingAnimation/index.js";
 import DiscoverPageSelector from "./DiscoverPageSelector/index.js";
+import SearchFieldComponent from "./SearchFieldComponent/index.js";
 
 export {
     DiscoverSearchComponent,
@@ -13,5 +14,6 @@ export {
     ColorSearchOption,
     ToughnessSelectorComponent,
     SearchLoadingAnimation,
-    DiscoverPageSelector
+    DiscoverPageSelector,
+    SearchFieldComponent
 };
