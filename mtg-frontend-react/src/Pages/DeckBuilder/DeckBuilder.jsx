@@ -1,21 +1,39 @@
 import './DeckBuilder.css';
 import {useParams} from "react-router-dom";
-import {DeckBuilderSearchComponent} from "../../Components/DeckBuilder/index.js";
+import {
+    DeckBuilderCardBoard,
+    DeckBuilderSearchComponent,
+    DeckBuilderStatusBoard
+} from "../../Components/DeckBuilder/index.js";
 import {useState} from "react";
 
 const DeckBuilder = () => {
-    const [ isLoading, setIsLoading ] = useState( false );
-    const [ allCardData, setAllCardData ] = useState( null );
-    const [ currentPage, setCurrentPage ] = useState(0);
     const { name } = useParams();
+    const [currentDeck, setCurrentDeck] = useState(
+        {
+        deckName: name,
+        cards:{}
+        });
 
+
+    const handleCardClick = ( cardData ) => {
+        if( currentDeck.cards[ cardData.name] ) currentDeck.cards[ cardData.name ].amount++;
+        else currentDeck.cards[ cardData.name ] = { amount : 1, data: cardData };
+
+        setCurrentDeck(structuredClone(currentDeck));
+    }
+
+    //TODO Implement deck loading from browser memory
     return (
         <div className={'deck-builder-page-container'}>
             <h1 className={'deck-builder-deck-name'}>{name}</h1>
             <div className={'deck-builder-search-container'}>
-                <DeckBuilderSearchComponent setResults={setAllCardData} setIsLoading={setIsLoading} setPage={setCurrentPage}/>
+                <DeckBuilderSearchComponent onCardClick={handleCardClick}/>
             </div>
-            <div className={'deck-builder-result-container'}>RESULT</div>
+            <div className={'deck-builder-result-container'}>
+                <DeckBuilderStatusBoard deck={currentDeck}/>
+                <DeckBuilderCardBoard deck={currentDeck}/>
+            </div>
             <div className={'deck-builder-controls-container'}>
                 <button> SAVE </button>
                 <button> ERASE </button>

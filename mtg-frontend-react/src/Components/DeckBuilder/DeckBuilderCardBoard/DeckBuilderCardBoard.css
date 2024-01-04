@@ -1,0 +1,7 @@
+.deck-builder-card-board{
+    height: 100%;
+    width: 75%;
+
+    flex-wrap: wrap;
+    overflow: hidden;
+}

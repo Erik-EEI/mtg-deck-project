@@ -1,9 +1,9 @@
 import './DeckBuilderCardSelector.css';
 import {useEffect, useState} from "react";
-import {arrowLeft, arrowRight, sadWizardLogo} from "../../../Assets/index.js";
+import {arrowLeft, arrowRight} from "../../../Assets/index.js";
 import {DiscoverCardComponent, SearchLoadingAnimation} from "../../Discover/index.js";
 
-const DeckBuilderCardSelector = ({ cardArray, isLoading }) => {
+const DeckBuilderCardSelector = ({ cardArray, isLoading, onCardClick }) => {
     const [ currentPage, setCurrentPage ] = useState(1);
     const [ cardsToDisplay, setCardsToDisplay ] = useState(null);
 
@@ -21,7 +21,7 @@ const DeckBuilderCardSelector = ({ cardArray, isLoading }) => {
             const cardIndex = ((currentPage - 1) * 3) + i;
             if(!cardArray[cardIndex]) break;
 
-            cards.push(<DiscoverCardComponent key={cardIndex} cardData={cardArray[cardIndex]} onClick={()=>console.log('clicky')}/> )
+            cards.push(<DiscoverCardComponent key={cardIndex} cardData={cardArray[cardIndex]} onClick={onCardClick}/> )
         }
         return cards;
     }

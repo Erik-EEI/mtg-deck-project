@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 import {useSearchCards} from "../../../Hooks/index.js";
 import {DeckBuilderCardSelector} from "../index.js";
 
-const DeckBuilderSearchComponent = ({setResults, setIsLoading, setPage}) => {
+const DeckBuilderSearchComponent = ({ onCardClick }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchColors, setSearchColors] = useState([]);
     const [typeSearchTerm, setTypeSearchTerm] = useState('');
@@ -13,10 +13,6 @@ const DeckBuilderSearchComponent = ({setResults, setIsLoading, setPage}) => {
     const { resultCardsData, isResultsLoading, isResultsError, reFetchSearchCards } = useSearchCards( searchTerm, searchColors, typeSearchTerm );
 
     useEffect(() => {
-        if( resultCardsData ){
-        setResults(resultCardsData.data);
-        setIsLoading(false);
-        }
     }, [resultCardsData]);
 
     const generateColorPickers = () => {
@@ -33,9 +29,7 @@ const DeckBuilderSearchComponent = ({setResults, setIsLoading, setPage}) => {
         if( searchTerm === '' && searchColors.length === 0){
             console.log('Empty')
         } else {
-            setIsLoading( true );
             reFetchSearchCards();
-            setPage(1);
         }
     }
 //TODO Elevate constants, check ? on deckBuilderCardSelector props
@@ -53,7 +47,7 @@ const DeckBuilderSearchComponent = ({setResults, setIsLoading, setPage}) => {
                     > SEARCH </button>
             </section>
             <section className={'deck-builder-search-results'}>
-                <DeckBuilderCardSelector cardArray={resultCardsData?.data} isLoading={isResultsLoading}/>
+                <DeckBuilderCardSelector cardArray={resultCardsData?.data} isLoading={isResultsLoading} onCardClick={onCardClick}/>
             </section>
         </div>
     );

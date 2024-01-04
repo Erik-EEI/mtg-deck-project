@@ -26,4 +26,7 @@
 .deck-builder-result-container{
     width: 100%;
     height: calc(45vh - 10rem);
+
+    display: flex;
+    flex-direction: row;
 }
