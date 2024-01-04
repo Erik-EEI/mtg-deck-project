@@ -9,6 +9,8 @@ import exploreIcon from './icons/exploreIcon.svg';
 import sadWizardLogo from './ui/sad_wizard.png';
 import searchingWizardLogo from './ui/searching-wizard.png';
 import cardPlaceholder from './card/card_placeholder.jpg';
+import arrowLeft from './icons/arrow-left.svg';
+import arrowRight from './icons/arrow-right.svg';
 
 export {
     backgroundVideo,
@@ -21,5 +23,7 @@ export {
     exploreIcon,
     sadWizardLogo,
     searchingWizardLogo,
-    cardPlaceholder
+    cardPlaceholder,
+    arrowLeft,
+    arrowRight
 }

@@ -1,6 +1,6 @@
 import './DeckBuilderCardSelector.css';
 import {useEffect, useState} from "react";
-import {sadWizardLogo} from "../../../Assets/index.js";
+import {arrowLeft, arrowRight, sadWizardLogo} from "../../../Assets/index.js";
 import {DiscoverCardComponent, SearchLoadingAnimation} from "../../Discover/index.js";
 
 const DeckBuilderCardSelector = ({ cardArray, isLoading }) => {
@@ -26,13 +26,31 @@ const DeckBuilderCardSelector = ({ cardArray, isLoading }) => {
         return cards;
     }
 
+    const handleLeftArrowButtonKey = () => {
+        setCurrentPage(currentPage - 1);
+    }
+
+    const handleRightArrowButtonKey = () => {
+        setCurrentPage(currentPage + 1);
+    }
+// TODO Add conditional rendering for arrows
     return (
         <div className={'deck-builder-card-selector-container'}>
-            <button>BACK</button>
+            <button
+            type={'button'}
+            onClick={handleLeftArrowButtonKey}
+            disabled={(currentPage - 1) < 1}
+            className={(currentPage - 1) < 1 ? 'arrow-disabled' : ''}
+            ><img src={arrowLeft}/></button>
             <section>
-            {isLoading ? <SearchLoadingAnimation /> : cardsToDisplay }
+                {isLoading ? <SearchLoadingAnimation /> : cardsToDisplay }
             </section>
-            <button>FORWARD</button>
+            <button
+            type={'button'}
+            onClick={handleRightArrowButtonKey}
+            disabled={(currentPage + 1) > (Math.ceil(cardArray?.length / 3))}
+            className={(currentPage + 1) > (Math.ceil(cardArray?.length / 3)) ? 'arrow-disabled' : ''}
+            ><img src={arrowRight}/></button>
         </div>
     );
 };
