@@ -2,6 +2,11 @@
     height: 100%;
     width: 75%;
 
+    display: flex;
+
     flex-wrap: wrap;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-wrap: normal;
+
+    padding: 2rem 0.5rem 0.5rem 2rem;
 }

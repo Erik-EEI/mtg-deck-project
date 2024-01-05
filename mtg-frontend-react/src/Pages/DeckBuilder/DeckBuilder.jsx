@@ -15,14 +15,36 @@ const DeckBuilder = () => {
         cards:{}
         });
 
-
+//TODO Debug card reappear bug when deleting from deck
     const handleCardClick = ( cardData ) => {
+        console.log(cardData)
         if( currentDeck.cards[ cardData.name] ) currentDeck.cards[ cardData.name ].amount++;
         else currentDeck.cards[ cardData.name ] = { amount : 1, data: cardData };
 
         setCurrentDeck(structuredClone(currentDeck));
     }
 
+    const handlePlusAmount = ( cardName ) => {
+        console.log(cardName)
+        currentDeck.cards[cardName].amount++;
+
+        setCurrentDeck(structuredClone(currentDeck));
+    }
+
+    const handleMinusAmount = ( cardName ) => {
+        currentDeck.cards[cardName].amount--;
+        if(currentDeck.cards[cardName].amount === 0) delete currentDeck.cards[cardName];
+
+        setCurrentDeck(structuredClone(currentDeck));
+    }
+
+    const handleRemove = ( cardName ) => {
+        delete currentDeck.cards[cardName];
+
+        setCurrentDeck(structuredClone(currentDeck));
+    }
+
+    //TODO Research structured clone technique
     //TODO Implement deck loading from browser memory
     return (
         <div className={'deck-builder-page-container'}>
@@ -32,7 +54,12 @@ const DeckBuilder = () => {
             </div>
             <div className={'deck-builder-result-container'}>
                 <DeckBuilderStatusBoard deck={currentDeck}/>
-                <DeckBuilderCardBoard deck={currentDeck}/>
+                <DeckBuilderCardBoard
+                    deck={currentDeck}
+                    handleRemove={handleRemove}
+                    handleMinusAmount={handleMinusAmount}
+                    handlePlusAmount={handlePlusAmount}
+                />
             </div>
             <div className={'deck-builder-controls-container'}>
                 <button> SAVE </button>

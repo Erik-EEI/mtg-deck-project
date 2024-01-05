@@ -2,7 +2,7 @@ import './DeckBuilderCardBoard.css';
 import {DeckBuilderCardSlide} from "../index.js";
 import {useEffect, useState} from "react";
 
-const DeckBuilderCardBoard = ({ deck }) => {
+const DeckBuilderCardBoard = ({ deck, handlePlusAmount, handleMinusAmount, handleRemove }) => {
     const [slidesToDisplay, setSidesToDisplay] = useState([]);
 
     useEffect(() => {
@@ -11,9 +11,15 @@ const DeckBuilderCardBoard = ({ deck }) => {
 
     const renderCardSlides = () => {
         const slidesArray = [];
-
         for(let card in deck.cards){
-            slidesArray.push(<DeckBuilderCardSlide key={card} cardData={ deck.cards[card].data }/>);
+            slidesArray.push(
+                <DeckBuilderCardSlide
+                    key={card}
+                    card={ deck.cards[card] }
+                    handleRemove={handleRemove}
+                    handleMinusAmount={handleMinusAmount}
+                    handlePlusAmount={handlePlusAmount}
+                />);
         }
 
 
