@@ -31,7 +31,6 @@ const DeckBuilderStatusBoard = ({ deck }) => {
             if( deck.cards[card].data.cmc ) manaCostArray.push( deck.cards[card].data.cmc );
         }
 
-        console.log(manaCostArray);
         return (manaCostArray.reduce((acc,curr) => acc + curr,0) / manaCostArray.length).toFixed(1);
     }
 

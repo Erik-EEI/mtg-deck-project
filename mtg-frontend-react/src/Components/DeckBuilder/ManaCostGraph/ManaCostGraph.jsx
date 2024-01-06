@@ -1,28 +1,33 @@
 import { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
+import manaCostGraph from "./index.js";
 
 const ManaCostGraph = ({ deck }) => {
     const chartRef = useRef();
     const chartInstance = useRef(null);
 
+    const getManaFrequencyTable = () => {
+        const manaFreq = {};
+
+        for (let card in deck.cards) {
+            if ( deck.cards[card].data.cmc && manaFreq[deck.cards[card].data.cmc] ) {
+                manaFreq[deck.cards[card].data.cmc]+= deck.cards[card].amount;
+            } else if ( deck.cards[card].data.cmc && !manaFreq[deck.cards[card].data.cmc] ) {
+                manaFreq[deck.cards[card].data.cmc] = deck.cards[card].amount;
+            }
+        }
+
+        return manaFreq;
+    }
+
     useEffect(() => {
         if (Object.keys(deck.cards).length !== 0) {
-            const manaCosts = {};
-
-            for (let card in deck.cards) {
-                if (deck.cards[card].data.cmc && manaCosts[deck.cards[card].data.cmc]) {
-                    manaCosts[deck.cards[card].data.cmc]++;
-                } else if (deck.cards[card].data.cmc && !manaCosts[deck.cards[card].data.cmc]) {
-                    manaCosts[deck.cards[card].data.cmc] = 1;
-                }
-            }
-
+            const manaCosts = getManaFrequencyTable();
             const labels = Object.keys(manaCosts);
             const data = Object.values(manaCosts);
 
+            console.log(manaCosts);
             const ctx = chartRef.current.getContext('2d');
-            
-
             chartInstance.current = new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -31,8 +36,8 @@ const ManaCostGraph = ({ deck }) => {
                         {
                             label: 'Card Count',
                             data,
-                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                            borderColor: 'rgba(75, 192, 192, 1)',
+                            backgroundColor: 'rgba(192,75,75,0.2)',
+                            borderColor: 'rgb(192,75,75)',
                             borderWidth: 1,
                         },
                     ],
