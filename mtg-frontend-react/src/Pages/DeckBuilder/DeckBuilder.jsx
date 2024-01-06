@@ -30,7 +30,7 @@ const DeckBuilder = () => {
         }
     }, [currentDeck]);
 
-
+//TODO Might be better to load deck by ID instead of deck name
     const handleCardClick = (cardData) => {
         const updatedDeck = { ...currentDeck };
         if (updatedDeck.cards[cardData.name]) {
@@ -85,7 +85,7 @@ const DeckBuilder = () => {
 
         setCurrentDeck( factoryResetDeck );
     }
-    
+
     return (
         <div className={'deck-builder-page-container'}>
             <h1 className={'deck-builder-deck-name'}>{name}</h1>
