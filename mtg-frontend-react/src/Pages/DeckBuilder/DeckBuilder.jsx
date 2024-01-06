@@ -5,47 +5,87 @@ import {
     DeckBuilderSearchComponent,
     DeckBuilderStatusBoard
 } from "../../Components/DeckBuilder/index.js";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const DeckBuilder = () => {
     const { name } = useParams();
+    const [isLoadedFromMemory, setIsLoadedFromMemory] = useState(false);
     const [currentDeck, setCurrentDeck] = useState(
         {
         deckName: name,
         cards:{}
         });
 
-//TODO Debug card reappear bug when deleting from deck
-    const handleCardClick = ( cardData ) => {
-        console.log(cardData)
-        if( currentDeck.cards[ cardData.name] ) currentDeck.cards[ cardData.name ].amount++;
-        else currentDeck.cards[ cardData.name ] = { amount : 1, data: cardData };
+    useEffect(() => {
+        const deckContainer = JSON.parse( localStorage.getItem('deck-container') );
 
-        setCurrentDeck(structuredClone(currentDeck));
+        if( deckContainer && deckContainer[name] && !isLoadedFromMemory ){
+            const deckFromStorage = {
+                deckName: name,
+                cards: deckContainer[name]
+            }
+
+            setIsLoadedFromMemory( true );
+            setCurrentDeck(deckFromStorage);
+        }
+    }, [currentDeck]);
+
+
+    const handleCardClick = (cardData) => {
+        const updatedDeck = { ...currentDeck };
+        if (updatedDeck.cards[cardData.name]) {
+            updatedDeck.cards[cardData.name].amount++;
+        } else {
+            updatedDeck.cards[cardData.name] = { amount: 1, data: cardData };
+        }
+
+        setCurrentDeck(updatedDeck);
+    };
+
+    const handlePlusAmount = (cardName) => {
+        const updatedDeck = { ...currentDeck };
+        updatedDeck.cards[cardName].amount++;
+
+        setCurrentDeck(updatedDeck);
+    };
+
+    const handleMinusAmount = (cardName) => {
+        const updatedDeck = { ...currentDeck };
+        updatedDeck.cards[cardName].amount--;
+
+        if (updatedDeck.cards[cardName].amount === 0) {
+            delete updatedDeck.cards[cardName];
+        }
+
+        setCurrentDeck(updatedDeck);
+    };
+
+    const handleRemove = (cardName) => {
+        const updatedDeck = { ...currentDeck };
+        delete updatedDeck.cards[cardName];
+
+        setCurrentDeck(updatedDeck);
+    };
+
+    const handleSaveDeck = () => {
+        let deckContainer = JSON.parse(localStorage.getItem('deck-container')) || {};
+        if( !deckContainer ) deckContainer = {};
+
+        deckContainer[currentDeck.deckName] = currentDeck.cards;
+
+        localStorage.setItem('deck-container', JSON.stringify(deckContainer));
+    };
+
+
+    const handleResetDeck = () => {
+        const factoryResetDeck = {
+            deckName: name,
+            cards:{}
+        };
+
+        setCurrentDeck( factoryResetDeck );
     }
-
-    const handlePlusAmount = ( cardName ) => {
-        console.log(cardName)
-        currentDeck.cards[cardName].amount++;
-
-        setCurrentDeck(structuredClone(currentDeck));
-    }
-
-    const handleMinusAmount = ( cardName ) => {
-        currentDeck.cards[cardName].amount--;
-        if(currentDeck.cards[cardName].amount === 0) delete currentDeck.cards[cardName];
-
-        setCurrentDeck(structuredClone(currentDeck));
-    }
-
-    const handleRemove = ( cardName ) => {
-        delete currentDeck.cards[cardName];
-
-        setCurrentDeck(structuredClone(currentDeck));
-    }
-
-    //TODO Research structured clone technique
-    //TODO Implement deck loading from browser memory
+    
     return (
         <div className={'deck-builder-page-container'}>
             <h1 className={'deck-builder-deck-name'}>{name}</h1>
@@ -62,8 +102,14 @@ const DeckBuilder = () => {
                 />
             </div>
             <div className={'deck-builder-controls-container'}>
-                <button> SAVE </button>
-                <button> ERASE </button>
+                <button
+                type={'button'}
+                onClick={handleSaveDeck}
+                > SAVE </button>
+                <button
+                type={"button"}
+                onClick={handleResetDeck}
+                > ERASE </button>
             </div>
         </div>
     );
