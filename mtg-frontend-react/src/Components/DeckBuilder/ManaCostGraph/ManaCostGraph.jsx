@@ -25,6 +25,7 @@ const ManaCostGraph = ({ deck }) => {
             const manaCosts = getManaFrequencyTable();
             const labels = Object.keys(manaCosts);
             const data = Object.values(manaCosts);
+            let delayed;
 
             console.log(manaCosts);
             const ctx = chartRef.current.getContext('2d');
@@ -43,6 +44,18 @@ const ManaCostGraph = ({ deck }) => {
                     ],
                 },
                 options: {
+                    animation: {
+                        onComplete: () => {
+                            delayed = true;
+                        },
+                        delay: (context) => {
+                            let delay = 0;
+                            if (context.type === 'data' && context.mode === 'default' && !delayed) {
+                                delay = context.dataIndex * 200 + context.datasetIndex * 70;
+                            }
+                            return delay;
+                        },
+                    },
                     scales: {
                         y: {
                             beginAtZero: true,
