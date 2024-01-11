@@ -1,5 +1,5 @@
 import './DeckBuilderSearchComponent.css';
-import {ColorSearchOption, SearchFieldComponent} from "../../Discover/index.js";
+import {ColorSearchOption, DefaultButton, SearchFieldComponent} from "../../Discover/index.js";
 import UseGetSymbology from "../../../Hooks/useGetSymbology.jsx";
 import {useEffect, useState} from "react";
 import {useSearchCards} from "../../../Hooks/index.js";
@@ -41,10 +41,10 @@ const DeckBuilderSearchComponent = ({ onCardClick }) => {
                 <div className={'deck-builder-search-color-container'}>
                 { symbologyData && generateColorPickers() }
                 </div>
-                <button
-                    type={'button'}
+                <DefaultButton
+                    text={'Search'}
                     onClick={handleSearchButtonClick}
-                    > SEARCH </button>
+                    />
             </section>
             <section className={'deck-builder-search-results'}>
                 <DeckBuilderCardSelector cardArray={resultCardsData?.data} isLoading={isResultsLoading} onCardClick={onCardClick}/>

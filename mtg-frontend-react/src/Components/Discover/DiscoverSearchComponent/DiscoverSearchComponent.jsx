@@ -1,7 +1,7 @@
 import './DiscoverSearchComponent.css';
 import {useEffect, useState} from "react";
 import {useGetRandomCard, useGetSymbology, useSearchCards} from "../../../Hooks/index.js";
-import {ColorSearchOption, SearchFieldComponent, ToughnessSelectorComponent} from "../index.js";
+import {ColorSearchOption, DefaultButton, SearchFieldComponent, ToughnessSelectorComponent} from "../index.js";
 const DiscoverSearchComponent = ({setResults, setIsLoading, setPage}) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchColors, setSearchColors] = useState([]);
@@ -49,6 +49,7 @@ const DiscoverSearchComponent = ({setResults, setIsLoading, setPage}) => {
         setIsLoading( true );
         setDisplaySearchResults(false);
         reFetchRandomCard();
+        setPage(1);
     }
 //TODO Include power/toughness change to reset state
     return (
@@ -62,8 +63,8 @@ const DiscoverSearchComponent = ({setResults, setIsLoading, setPage}) => {
             </section>
             <p> POWER / TOUGHNESS </p>
             <ToughnessSelectorComponent setPowerPreference={setPowerPreference} setToughnessPreference={setToughnessPreference} />
-            <button onClick={ handleRandomButtonClick }> Surprise me! </button>
-            <button onClick={ handleSearchButtonClick }> SEARCH </button>
+            <DefaultButton text={'Surprise me!'} onClick={ handleRandomButtonClick } />
+            <DefaultButton text={'Search'} onClick={ handleSearchButtonClick } />
         </div>
     );
 };
