@@ -1,12 +1,14 @@
 .deck-builder-card-board{
     height: 100%;
-    width: 75%;
-
+    width: 69%;
     display: flex;
-
     flex-wrap: wrap;
     overflow-x: hidden;
     overflow-wrap: normal;
-
     padding: 2rem 0.5rem 0.5rem 2rem;
+    background-color: rgba(24, 0, 0, 0.6);
+    flex-direction: row;
+    align-content: flex-start;
+    border-radius: 2rem;
+    box-shadow: 0 0 20px 11px rgba(24, 0, 0, 0.78);
 }

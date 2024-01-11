@@ -1,0 +1,19 @@
+.card-loading-animation {
+    width: 70%;
+
+    animation-name: spin;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    filter: drop-shadow( 0 0 10px #720000);
+}
+
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}

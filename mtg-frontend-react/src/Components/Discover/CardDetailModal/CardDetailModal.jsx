@@ -21,6 +21,11 @@ const CardDetailModal = ({ isModalVisible,handleOnKeyClose,handleOnClick,cardDat
         }
     }
 
+    const replaceManaWithSymbols = () => {
+        let manaArray = cardData.mana_cost
+        console.log(manaArray);
+    }
+
     if( !cardData ) {
         return 'Loading'
     }
@@ -42,6 +47,7 @@ const CardDetailModal = ({ isModalVisible,handleOnKeyClose,handleOnClick,cardDat
                     <div>
                         <h3>MANA COST</h3>
                         <h3>{cardData.mana_cost}</h3>
+                        {replaceManaWithSymbols()}
                     </div>
                     <div>
                         <h3>CARD TYPE</h3>

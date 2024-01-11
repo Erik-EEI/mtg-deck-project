@@ -6,6 +6,7 @@ import ToughnessSelectorComponent from "./ToughnessSelectorComponent/index.js";
 import SearchLoadingAnimation from "./SearchLoadingAnimation/index.js";
 import DiscoverPageSelector from "./DiscoverPageSelector/index.js";
 import SearchFieldComponent from "./SearchFieldComponent/index.js";
+import CardLoadingAnimation from "./CardLoadingAnimation/index.js";
 
 export {
     DiscoverSearchComponent,
@@ -15,5 +16,6 @@ export {
     ToughnessSelectorComponent,
     SearchLoadingAnimation,
     DiscoverPageSelector,
-    SearchFieldComponent
+    SearchFieldComponent,
+    CardLoadingAnimation
 };

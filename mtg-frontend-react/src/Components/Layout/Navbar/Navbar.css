@@ -10,9 +10,32 @@ nav {
   padding: 0 5rem 0 5rem;
 
   background-color: var(--primary-off);
+
+  & button{
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+
+    cursor: pointer;
+
+    padding: 2rem;
+    margin: 0 3rem 0 3rem;
+
+    font-size: 1vw;
+
+    border: solid black 2.5px;
+    border-radius: 2rem;
+
+    transition: all 300ms;
+
+  }
 }
 
 #navbar-logo {
   height: 130%;
   cursor: pointer;
+}
+
+.active-nav-button {
+  border-color: #c20000;
+  background-color: rgba(70, 0, 0, 0.4);
 }

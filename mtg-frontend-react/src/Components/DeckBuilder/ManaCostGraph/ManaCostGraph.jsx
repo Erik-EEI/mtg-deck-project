@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
-import manaCostGraph from "./index.js";
 
 const ManaCostGraph = ({ deck }) => {
     const chartRef = useRef();
