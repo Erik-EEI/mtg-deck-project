@@ -35,7 +35,7 @@ const DiscoverSearchComponent = ({setResults, setIsLoading, setPage}) => {
     }
 
     const handleSearchButtonClick = () => {
-        if( searchTerm === '' && searchColors.length === 0){
+        if( searchTerm === '' && searchColors.length === 0 && typeSearchTerm === ''){
             console.log('Empty')
         } else {
             setIsLoading( true );
