@@ -34,8 +34,16 @@ const DiscoverSearchComponent = ({setResults, setIsLoading, setPage}) => {
         })
     }
 
+    //TODO Refactor if statement
     const handleSearchButtonClick = () => {
-        if( searchTerm === '' && searchColors.length === 0 && typeSearchTerm === ''){
+        if( searchTerm === '' &&
+            searchColors.length === 0 &&
+            typeSearchTerm === '' &&
+            toughnessPreference[0] === 0 &&
+            toughnessPreference[1] === 20 &&
+            powerPreference[0] === 0 &&
+            toughnessPreference[1] === 20
+        ){
             console.log('Empty')
         } else {
             setIsLoading( true );
