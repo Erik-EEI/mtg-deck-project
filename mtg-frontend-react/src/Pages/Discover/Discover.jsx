@@ -7,6 +7,7 @@ import {
 } from "../../Components/Discover/index.js";
 import {useEffect, useState} from "react";
 import {sadWizardLogo} from "../../Assets/index.js";
+import {useComponentWidthCalculator} from "../../Hooks/index.js";
 const Discover = () => {
     const [ allCardData, setAllCardData ] = useState( null );
     const [ cardToReview, setCardToReview ] = useState(null );
@@ -14,12 +15,16 @@ const Discover = () => {
     const [ isModalVisible, setIsModalVisible ] = useState(false);
     const [ currentPage, setCurrentPage ] = useState(0);
     const [ cardsToDisplay, setCardsToDisplay ] = useState(null);
+    const [ cardsPerPageCount, setCardsPerPageCount ] = useState(0);
+    const { ref, componentWidth } = useComponentWidthCalculator();
 
     useEffect(() => {
         if(allCardData || allCardData === undefined) {
-            setCardsToDisplay( generateCardsForPage(currentPage) );
+            const cardsPerPage = calculateCardCount()
+            setCardsPerPageCount( cardsPerPage );
+            setCardsToDisplay( generateCardsForPage(currentPage, cardsPerPage) );
         }
-    }, [currentPage, allCardData]);
+    }, [currentPage, allCardData, componentWidth]);
 
     const handleOnClick = ( cardData ) => {
         if( cardData ) setCardToReview( cardData );
@@ -36,7 +41,7 @@ const Discover = () => {
         }
     };
 
-    const generateCardsForPage = ( pageNo ) => {
+    const generateCardsForPage = ( pageNo, cardCount ) => {
         if( allCardData === undefined ) return (
             <div className='no-cards-found-container'>
                 <img src={sadWizardLogo} alt='Sorry, no cards found'/>
@@ -46,15 +51,19 @@ const Discover = () => {
         const cards = [];
 
         //TODO Raise card/page to constant
-        for(let i = 0; i < 6; i++ ){
-            const cardIndex = ((pageNo - 1) * 6) + i;
+        for(let i = 0; i < cardCount; i++ ){
+            const cardIndex = ((pageNo - 1) * cardCount) + i;
             if(!allCardData[cardIndex]) break;
 
             cards.push(<DiscoverCardComponent key={i} cardData={allCardData[ cardIndex ]} onClick={ handleOnClick }/>)
         }
         return cards;
     }
-    //TODO Implement loading card animation
+
+    const calculateCardCount = () => {
+        return Math.floor(componentWidth / 280 ) * 2 ;
+    }
+
     return (
         <>
         <div id='discover-page-container' className={isModalVisible ? 'blur' : ''}>
@@ -62,10 +71,15 @@ const Discover = () => {
                 <DiscoverSearchComponent setResults={setAllCardData} setIsLoading={setIsLoading} setPage={setCurrentPage} />
             </div>
             <section className={'discover-result-area-container'}>
-                <div id='discover-cards-container'>
+                <div id='discover-cards-container' ref={ref}>
                     {isLoading ? <SearchLoadingAnimation /> : cardsToDisplay }
                 </div>
-                {allCardData && <DiscoverPageSelector currentPage={currentPage} setPage={setCurrentPage} allResultCount={allCardData.length}/>}
+                {allCardData && <DiscoverPageSelector
+                    currentPage={currentPage}
+                    setPage={setCurrentPage}
+                    allResultCount={allCardData.length}
+                    cardsPerPageCount={ cardsPerPageCount }
+                />}
             </section>
 
         </div>

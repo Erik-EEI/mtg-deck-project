@@ -1,5 +1,5 @@
 import './DiscoverPageSelector.css';
-const DiscoverPageSelector = ({ currentPage, setPage, allResultCount}) => {
+const DiscoverPageSelector = ({ currentPage, setPage, allResultCount, cardsPerPageCount}) => {
     const handleNextPageButtonClick = () => {
         setPage(currentPage + 1);
     }
@@ -18,11 +18,11 @@ const DiscoverPageSelector = ({ currentPage, setPage, allResultCount}) => {
             onClick={handlePreviousPageButtonClick}
             >{'<'}</button>
 
-            <p>{ currentPage } / {Math.ceil(allResultCount / 6)}</p>
+            <p>{ currentPage } / {Math.ceil(allResultCount / cardsPerPageCount)}</p>
 
             <button
-                className={(currentPage + 1) > (Math.ceil(allResultCount / 6)) ? 'page-selector-button disabled-button' : 'page-selector-button'}
-                disabled={(currentPage + 1) > (Math.ceil(allResultCount / 6))}
+                className={(currentPage + 1) > (Math.ceil(allResultCount / cardsPerPageCount)) ? 'page-selector-button disabled-button' : 'page-selector-button'}
+                disabled={(currentPage + 1) > (Math.ceil(allResultCount / cardsPerPageCount))}
                 onClick={handleNextPageButtonClick}
             >{'>'}</button>
         </div>
