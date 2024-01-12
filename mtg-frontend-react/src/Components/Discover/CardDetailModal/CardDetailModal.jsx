@@ -1,6 +1,5 @@
 import './CardDetailModal.css';
 import {useEffect, useRef} from "react";
-import {cardPlaceholder} from "../../../Assets/index.js";
 import {useImagePreloader} from "../../../Hooks/index.js";
 import {CardLoadingAnimation} from "../index.js";
 

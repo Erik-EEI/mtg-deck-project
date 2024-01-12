@@ -11,6 +11,10 @@ import searchingWizardLogo from './ui/searching-wizard.png';
 import cardPlaceholder from './card/card_placeholder.jpg';
 import arrowLeft from './icons/arrow-left.svg';
 import arrowRight from './icons/arrow-right.svg';
+import dashboardViewBackground from './ui/dashboard_view_bg.jpg';
+import dashboardSettingsBackground from './ui/dashboard_settings_bg.jpg';
+import dashboardDiscoverBackground from './ui/dashboard_discover_bg.jpg';
+import dashboardBuildBackground from './ui/dashboard_build_bg.jpg';
 
 export {
     backgroundVideo,
@@ -25,5 +29,9 @@ export {
     searchingWizardLogo,
     cardPlaceholder,
     arrowLeft,
-    arrowRight
+    arrowRight,
+    dashboardBuildBackground,
+    dashboardDiscoverBackground,
+    dashboardSettingsBackground,
+    dashboardViewBackground
 }
