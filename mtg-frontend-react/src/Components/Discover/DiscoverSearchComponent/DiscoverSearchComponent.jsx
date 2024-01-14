@@ -6,13 +6,14 @@ const DiscoverSearchComponent = ({setResults, setIsLoading, setPage}) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchColors, setSearchColors] = useState([]);
     const [typeSearchTerm, setTypeSearchTerm] = useState('');
-    const [ lastSearchCode, setLastSearchCode ] = useState('');
+    const [lastSearchCode, setLastSearchCode] = useState('');
     const [powerPreference, setPowerPreference] = useState([0,20]);
     const [toughnessPreference, setToughnessPreference] = useState([0,20]);
     const [ displaySearchResults, setDisplaySearchResults ] = useState(true);
     const { symbologyData, isSymbologyError, isSymbologyLoading } = useGetSymbology()
     const { randomCardData, isRandomCardLoading, isRandomCardError, reFetchRandomCard } = useGetRandomCard();
-    const { resultCardsData, isResultsLoading, isResultsError, reFetchSearchCards } = useSearchCards( searchTerm, searchColors, powerPreference, toughnessPreference, typeSearchTerm );
+    const { resultCardsData, isResultsLoading, isResultsError, reFetchSearchCards } = useSearchCards( searchTerm, searchColors,typeSearchTerm, powerPreference, toughnessPreference );
+
     useEffect(() => {
         if( resultCardsData && displaySearchResults ) {
             setResults(resultCardsData.data);
@@ -34,7 +35,7 @@ const DiscoverSearchComponent = ({setResults, setIsLoading, setPage}) => {
     }
     const generateSearchCode = () => {
         return searchTerm+searchColors+typeSearchTerm+powerPreference+toughnessPreference;
-    }
+    } // TODO Lift to custom hook
 
     //TODO Refactor if statement
     const handleSearchButtonClick = () => {

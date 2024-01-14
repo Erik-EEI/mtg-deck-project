@@ -1,6 +1,6 @@
 import {useQuery} from '@tanstack/react-query';
 
-const buildURL = ( searchTerm, colorArray, powerPreference, toughnessPreference, typeSearchTerm ) => {
+const buildURL = ( searchTerm, colorArray, typeSearchTerm, powerPreference, toughnessPreference, ) => {
     const searchParams = new URLSearchParams();
 
     if ( searchTerm ) {

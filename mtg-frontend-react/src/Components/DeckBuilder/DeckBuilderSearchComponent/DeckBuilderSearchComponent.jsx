@@ -9,6 +9,7 @@ const DeckBuilderSearchComponent = ({ onCardClick }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchColors, setSearchColors] = useState([]);
     const [typeSearchTerm, setTypeSearchTerm] = useState('');
+    const [lastSearchCode, setLastSearchCode] = useState('');
     const { symbologyData, isSymbologyError, isSymbologyLoading } = UseGetSymbology();
     const { resultCardsData, isResultsLoading, isResultsError, reFetchSearchCards } = useSearchCards( searchTerm, searchColors, typeSearchTerm );
 
@@ -23,12 +24,21 @@ const DeckBuilderSearchComponent = ({ onCardClick }) => {
             return <ColorSearchOption key={colorCode} colorIcon={icon} colorText={colorCode} selectedValues={searchColors} setSelectedValues={setSearchColors} />
         })
     }
+    const generateSearchCode = () => {
+        return searchTerm+searchColors+typeSearchTerm;
+    } // TODO Lift to custom hook
 
     //TODO include type search field here too
     const handleSearchButtonClick = () => {
-        if( searchTerm === '' && searchColors.length === 0){
+        if( searchTerm === '' &&
+            searchColors.length === 0 &&
+            typeSearchTerm === ''
+        ){
             console.log('Empty')
-        } else {
+        } else if( lastSearchCode === generateSearchCode() ){
+            console.log('No modifications')
+        }else{
+            setLastSearchCode( generateSearchCode() );
             reFetchSearchCards();
         }
     }
