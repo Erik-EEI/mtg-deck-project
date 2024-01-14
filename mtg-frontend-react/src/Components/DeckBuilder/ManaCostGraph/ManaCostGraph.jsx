@@ -25,8 +25,7 @@ const ManaCostGraph = ({ deck }) => {
             const labels = Object.keys(manaCosts);
             const data = Object.values(manaCosts);
             let delayed;
-
-            console.log(manaCosts);
+            
             const ctx = chartRef.current.getContext('2d');
             chartInstance.current = new Chart(ctx, {
                 type: 'bar',

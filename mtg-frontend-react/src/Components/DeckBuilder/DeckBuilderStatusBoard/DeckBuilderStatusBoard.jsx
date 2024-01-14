@@ -19,7 +19,6 @@ const DeckBuilderStatusBoard = ({ deck }) => {
         for( let card in deck.cards ){
             cardCount += deck.cards[card].amount;
         }
-        console.log(cardCount)
 
         return cardCount;
     }

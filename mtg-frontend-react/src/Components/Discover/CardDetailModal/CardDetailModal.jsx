@@ -18,7 +18,7 @@ const CardDetailModal = ({ isModalVisible,handleOnKeyClose,handleOnClick,cardDat
     }, [isModalVisible]);
 
     const mapStringToSymbols = ( str ) => {
-        let manaCost = str.replaceAll('{','').replaceAll('}','');
+        let manaCost = str?.replaceAll('{','')?.replaceAll('}','');
         const symbols = [];
 
         for( let symbolObject of symbologyData.data ){
@@ -37,6 +37,7 @@ const CardDetailModal = ({ isModalVisible,handleOnKeyClose,handleOnClick,cardDat
         return 'Loading'
     }
 
+    //FIXME Mana symbol only maps 1 time / color, even if there is 3 of the same color nex to each other
     //TODO Conditional modal for cards with no text
     //TODO Implement function that replaces color codes with mana emblems
 
