@@ -1,23 +1,36 @@
 import './CardDetailModal.css';
 import {useEffect, useRef} from "react";
-import {useImagePreloader} from "../../../Hooks/index.js";
+import {useGetSymbology, useImagePreloader} from "../../../Hooks/index.js";
 import {CardLoadingAnimation} from "../index.js";
 
 const CardDetailModal = ({ isModalVisible,handleOnKeyClose,handleOnClick,cardData }) => {
     const dialogRef = useRef(null);
     const { isLoading, src } = useImagePreloader( cardData, 'art' );
+    const { symbologyData, isSymbologyLoading } = useGetSymbology();
 
     useEffect(() => {
         if (dialogRef.current?.open && !isModalVisible) {
             dialogRef.current?.close();
         } else if (!dialogRef.current?.open && isModalVisible) {
             dialogRef.current?.showModal();
+
         }
     }, [isModalVisible]);
 
-    const replaceManaWithSymbols = () => {
-        let manaArray = cardData.mana_cost
-        console.log(manaArray);
+    const mapStringToSymbols = ( str ) => {
+        let manaCost = str.replaceAll('{','').replaceAll('}','');
+        const symbols = [];
+
+        for( let symbolObject of symbologyData.data ){
+            const currentSymbol = symbolObject.symbol.replaceAll('{','').replaceAll('}','');
+            const symbol = new RegExp( currentSymbol, 'gi');
+
+            if( symbol.test( manaCost ) ){
+                symbols.push( symbolObject.svg_uri )
+            }
+        }
+
+        return symbols;
     }
 
     if( !cardData ) {
@@ -42,18 +55,23 @@ const CardDetailModal = ({ isModalVisible,handleOnKeyClose,handleOnClick,cardDat
                 }
                 <h1>{cardData.name}</h1>
                 <div className={'card-modal-main-info'}>
-                    <div>
+                    <div className={'card-modal-info-mana'}>
                         <h3>MANA COST</h3>
-                        <h3>{cardData.mana_cost}</h3>
-                        {replaceManaWithSymbols()}
+                        <span>
+                        {symbologyData && mapStringToSymbols( cardData.mana_cost ).map((symbolSrc) => {
+                            return <img key={symbolSrc} src={symbolSrc} className={'card-detail-modal-symbol'} />
+                        })}
+                        </span>
                     </div>
-                    <div>
+                    <div className={'card-modal-info-type'}>
                         <h3>CARD TYPE</h3>
                         <h3>{cardData.type_line}</h3>
                     </div>
-                    <div>
+                    <div className={'card-modal-info-mana'}>
                         <h3>COLOR</h3>
-                        <h3>{cardData.color_identity}</h3>
+                        {symbologyData && mapStringToSymbols(cardData.color_identity.join('')).map((symbolSrc) => {
+                            return <img key={symbolSrc} src={symbolSrc} className={'card-detail-modal-symbol'} />
+                        })}
                     </div>
                 </div>
                 <div className={'card-modal-sub-info'}>
