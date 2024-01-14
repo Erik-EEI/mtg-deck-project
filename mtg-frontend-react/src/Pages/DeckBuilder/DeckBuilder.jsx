@@ -1,12 +1,12 @@
 import './DeckBuilder.css';
-import {useNavigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {
     DeckBuilderCardBoard,
     DeckBuilderSearchComponent,
     DeckBuilderStatusBoard, DeckNameInputField
 } from "../../Components/DeckBuilder/index.js";
 import {useEffect, useState} from "react";
-import {checkIcon, pencilIcon} from "../../Assets/index.js";
+import {DefaultButton} from "../../Components/Discover/index.js";
 
 const DeckBuilder = () => {
     const { name } = useParams();
@@ -112,14 +112,8 @@ const DeckBuilder = () => {
                 />
             </div>
             <div className={'deck-builder-controls-container'}>
-                <button
-                type={'button'}
-                onClick={handleSaveDeck}
-                > SAVE </button>
-                <button
-                type={"button"}
-                onClick={handleResetDeck}
-                > ERASE </button>
+                <DefaultButton text={'RESET'} onClick={handleResetDeck} />
+                <DefaultButton text={'SAVE'} onClick={handleSaveDeck}/>
             </div>
         </div>
     );
