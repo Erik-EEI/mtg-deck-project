@@ -1,18 +1,20 @@
 import './DeckBuilder.css';
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {
     DeckBuilderCardBoard,
     DeckBuilderSearchComponent,
-    DeckBuilderStatusBoard
+    DeckBuilderStatusBoard, DeckNameInputField
 } from "../../Components/DeckBuilder/index.js";
 import {useEffect, useState} from "react";
+import {checkIcon, pencilIcon} from "../../Assets/index.js";
 
 const DeckBuilder = () => {
     const { name } = useParams();
     const [isLoadedFromMemory, setIsLoadedFromMemory] = useState(false);
+    const [deckName, setDeckName] = useState(name);
     const [currentDeck, setCurrentDeck] = useState(
         {
-        deckName: name,
+        deckName: deckName,
         cards:{}
         });
 
@@ -21,14 +23,16 @@ const DeckBuilder = () => {
 
         if( deckContainer && deckContainer[name] && !isLoadedFromMemory ){
             const deckFromStorage = {
-                deckName: name,
+                deckName: deckName,
                 cards: deckContainer[name]
             }
 
             setIsLoadedFromMemory( true );
             setCurrentDeck(deckFromStorage);
         }
-    }, [currentDeck]);
+
+        updateCurrentDeckName();
+    }, [currentDeck, deckName]);
 
 //TODO Might be better to load deck by ID instead of deck name
     const handleCardClick = (cardData) => {
@@ -41,6 +45,14 @@ const DeckBuilder = () => {
 
         setCurrentDeck(updatedDeck);
     };
+    const updateCurrentDeckName = () => {
+        if( deckName !== currentDeck.deckName){
+            const updatedDeck = { ...currentDeck };
+            updatedDeck.deckName = deckName;
+
+            setCurrentDeck( updatedDeck );
+        }
+    }
 
     const handlePlusAmount = (cardName) => {
         const updatedDeck = { ...currentDeck };
@@ -75,8 +87,6 @@ const DeckBuilder = () => {
 
         localStorage.setItem('deck-container', JSON.stringify(deckContainer));
     };
-
-
     const handleResetDeck = () => {
         const factoryResetDeck = {
             deckName: name,
@@ -88,7 +98,7 @@ const DeckBuilder = () => {
 
     return (
         <div className={'deck-builder-page-container'}>
-            <h1 className={'deck-builder-deck-name'}>{name}</h1>
+            <DeckNameInputField setDeckName={setDeckName}/>
             <div className={'deck-builder-search-container'}>
                 <DeckBuilderSearchComponent onCardClick={handleCardClick}/>
             </div>

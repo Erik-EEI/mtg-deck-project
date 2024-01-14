@@ -10,6 +10,11 @@
     color: white;
     font-size: 3vw;
 
+    display: flex;
+    flex-direction: row;
+
+    width: fit-content;
+
     background-color: rgba(0, 0, 0, 0.6);
 
     padding: 0.5rem 2rem 1rem 2rem;
@@ -17,6 +22,14 @@
     border-radius: 2rem;
 
     box-shadow: 0 0 20px 11px rgba(24, 0, 0, 0.78);
+
+    & img {
+        cursor: pointer;
+
+        width: 1.9vw;
+
+        margin-left: 2rem;
+    }
 }
 
 .deck-builder-search-container{
