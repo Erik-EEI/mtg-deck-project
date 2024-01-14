@@ -50,7 +50,6 @@ const Discover = () => {
         )
         const cards = [];
 
-        //TODO Raise card/page to constant
         for(let i = 0; i < cardCount; i++ ){
             const cardIndex = ((pageNo - 1) * cardCount) + i;
             if(!allCardData[cardIndex]) break;

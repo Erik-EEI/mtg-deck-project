@@ -6,15 +6,14 @@ const DiscoverSearchComponent = ({setResults, setIsLoading, setPage}) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchColors, setSearchColors] = useState([]);
     const [typeSearchTerm, setTypeSearchTerm] = useState('');
+    const [ lastSearchCode, setLastSearchCode ] = useState('');
     const [powerPreference, setPowerPreference] = useState([0,20]);
     const [toughnessPreference, setToughnessPreference] = useState([0,20]);
     const [ displaySearchResults, setDisplaySearchResults ] = useState(true);
     const { symbologyData, isSymbologyError, isSymbologyLoading } = useGetSymbology()
     const { randomCardData, isRandomCardLoading, isRandomCardError, reFetchRandomCard } = useGetRandomCard();
     const { resultCardsData, isResultsLoading, isResultsError, reFetchSearchCards } = useSearchCards( searchTerm, searchColors, powerPreference, toughnessPreference, typeSearchTerm );
-
     useEffect(() => {
-
         if( resultCardsData && displaySearchResults ) {
             setResults(resultCardsData.data);
             setIsLoading(false);
@@ -23,7 +22,7 @@ const DiscoverSearchComponent = ({setResults, setIsLoading, setPage}) => {
             setIsLoading(false);
         }
 
-    }, [ resultCardsData, randomCardData]);
+    }, [ resultCardsData, randomCardData, displaySearchResults]);
 
     const generateColorPickers = () => {
         const colors = ["{W}","{U}","{B}","{R}", "{G}"];
@@ -32,6 +31,9 @@ const DiscoverSearchComponent = ({setResults, setIsLoading, setPage}) => {
             const icon = symbologyData.data.find((symbolObject) => symbolObject.symbol === colorCode).svg_uri;
             return <ColorSearchOption key={colorCode} colorIcon={icon} colorText={colorCode} selectedValues={searchColors} setSelectedValues={setSearchColors} />
         })
+    }
+    const generateSearchCode = () => {
+        return searchTerm+searchColors+typeSearchTerm+powerPreference+toughnessPreference;
     }
 
     //TODO Refactor if statement
@@ -45,8 +47,12 @@ const DiscoverSearchComponent = ({setResults, setIsLoading, setPage}) => {
             toughnessPreference[1] === 20
         ){
             console.log('Empty')
+        } else if( lastSearchCode === generateSearchCode() ){
+            setDisplaySearchResults( true )
+             console.log("No modifications")
         } else {
             setIsLoading( true );
+            setLastSearchCode( generateSearchCode() );
             setDisplaySearchResults(true);
             reFetchSearchCards();
             setPage(1);
