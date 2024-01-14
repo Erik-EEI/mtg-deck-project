@@ -29,7 +29,8 @@
     }
 
     & img {
-        scale: 5%;
+        width: 5%;
+        margin-right: 1rem;
     }
 }
 
