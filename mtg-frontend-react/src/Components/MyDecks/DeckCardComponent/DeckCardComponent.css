@@ -5,6 +5,7 @@
     transition: 200ms;
     background-size: cover;
     background-position: center;
+    background-color: transparent;
     border-radius: 2rem;
     box-shadow: 0 0 10px 3px black;
     margin: 2rem;
@@ -24,6 +25,8 @@
     align-items: center;
     border-radius: 20px;
     transition: 700ms;
+    background-size: cover;
+    background-position: center;
 }
 
 .title {
@@ -40,6 +43,7 @@
 
 .tracker:hover ~ #card .title {
     opacity: 1;
+
 }
 
 #prompt {
@@ -67,6 +71,7 @@
 
 .tracker:hover ~ #card #prompt {
     opacity: 0;
+
 }
 
 .tracker:hover ~ #card {
@@ -345,4 +350,8 @@
     user-select: none;
     /* Non-prefixed version, currently
                                      supported by Chrome, Edge, Opera and Firefox */
+}
+.container:hover {
+    transition: ease-in-out 500ms;
+    box-shadow: none;  /* No shadow on hover */
 }

@@ -13,7 +13,7 @@ const DeckCardComponent = ({ deckName, deckCards }) => {
     }, [isLoading]);
 
     return (
-        <div className="container noselect" style={backgroundStyle}>
+        <div className="container noselect">
             <div className="canvas">
                 <div className="tracker tr-1"></div>
                 <div className="tracker tr-2"></div>
@@ -40,7 +40,7 @@ const DeckCardComponent = ({ deckName, deckCards }) => {
                 <div className="tracker tr-23"></div>
                 <div className="tracker tr-24"></div>
                 <div className="tracker tr-25"></div>
-                <div id="card">
+                <div id="card" style={backgroundStyle}>
                     <p id="prompt">{deckName}</p>
                     <div className="title">{`View ${deckName}`}</div>
                 </div>
