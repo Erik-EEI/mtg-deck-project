@@ -30,7 +30,7 @@ const Navbar = () => {
             <NavbarButton onClick={() => handleNavButtonClick('main')} label={'Dashboard'} urlPath={'main'} />
             <NavbarButton onClick={() => handleNavButtonClick('discover')} label={'Discover'} urlPath={'discover'} />
             <NavbarButton onClick={() => handleNavButtonClick('build')} label={'Build'} urlPath={'build'} />
-            <NavbarButton onClick={() => handleNavButtonClick('main')} label={'Decks'} urlPath={'decks'} />
+            <NavbarButton onClick={() => handleNavButtonClick('my-decks')} label={'Decks'} urlPath={'my-decks'} />
         </div>
     </nav>
   );

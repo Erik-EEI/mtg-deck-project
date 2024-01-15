@@ -1,28 +1,24 @@
 import './MyDecks.css';
 import { DeckCardComponent } from "../../Components/MyDecks/index.js";
+import {useEffect, useState} from "react";
 
 const MyDecks = () => {
+    const [ deckArray, setDeckArray ] = useState([]);
     const retrieveDecks = () => {
-        const cards = [];
-        const deckContainer = JSON.parse(localStorage.getItem('deck-container'));
-
-        for (let [key, value ] of Object.entries(deckContainer)) {
-            console.log( deckContainer )
-            console.log( key )
-            console.log( value )
-            cards.push(<DeckCardComponent key={key} deckName={key} deckCards={value} />);
-        }
-
-        return cards;
+        const decks = JSON.parse(localStorage.getItem('deck-container'));
+        return decks ? decks : [];
     }
 
-    const decks = retrieveDecks(); // Call retrieveDecks once and store the result
+    useEffect(() => {
+        const decks = retrieveDecks();
+        setDeckArray( decks );
+    }, []);
 
     return (
         <div className={'my-decks-page-container'}>
             <h1>MY DECKS</h1>
             <div className={'my-decks-card-container'}>
-                {decks}
+                {Object.entries(deckArray).map((deck) => <DeckCardComponent key={deck[0]} deckName={deck[0]} deckCards={deck[1]} />)}
             </div>
         </div>
     );

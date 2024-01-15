@@ -1,10 +1,16 @@
 import './DeckCardComponent.css';
 import {useImagePreloader} from "../../../Hooks/index.js";
 import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 const DeckCardComponent = ({ deckName, deckCards }) => {
     const { src, isLoading} = useImagePreloader( Object.values(deckCards)[0].data, 'art' );
     const [ backgroundStyle, setBackgroundStyle ] = useState({});
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate(`/view/${deckName}`);
+    }
 
     useEffect(() => {
         if(src && !isLoading){
@@ -13,7 +19,7 @@ const DeckCardComponent = ({ deckName, deckCards }) => {
     }, [isLoading]);
 
     return (
-        <div className="container noselect">
+        <div className="container noselect" onClick={handleClick}>
             <div className="canvas">
                 <div className="tracker tr-1"></div>
                 <div className="tracker tr-2"></div>
