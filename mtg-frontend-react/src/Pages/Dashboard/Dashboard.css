@@ -13,6 +13,7 @@
     justify-content: center;
 
     background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: -2px -2px 20px 20px rgba(0,0,0,0.74);
 
     & p {
         margin: 1rem 5rem 0 5rem;
