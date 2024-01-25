@@ -1,6 +1,7 @@
 
     const getDeck = ( deckName ) => {
-        return JSON.parse( localStorage.getItem(deckName) );
+    const deckContainer = JSON.parse( localStorage.getItem('deck-container') );
+    return deckContainer[deckName];
     }
 
     const saveDeck = ( deck ) => {

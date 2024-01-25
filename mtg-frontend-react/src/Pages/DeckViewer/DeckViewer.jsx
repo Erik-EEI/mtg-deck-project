@@ -10,8 +10,9 @@ const DeckViewer = () => {
 
     useEffect(() => {
         const deck =  deckHandler.getDeck( name );
+
         setCurrentDeck( deck );
-    }, []);
+    }, [name]);
 
     if( !currentDeck ) return <div className={'deck-viewer-loading-container'}><CardLoadingAnimation /></div> ;
 
