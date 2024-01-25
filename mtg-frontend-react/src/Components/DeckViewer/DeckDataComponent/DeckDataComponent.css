@@ -1,0 +1,19 @@
+.deck-data-container{
+    width: 100%;
+    height: 100%;
+
+    border-radius: 1rem;
+    border: solid black 1px;
+
+    box-shadow: 0 0 25px 5px black;
+
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.deck-data-charts-container{
+    width: 100%;
+    height: 30%;
+
+    display: flex;
+    flex-direction: row;
+
+}
