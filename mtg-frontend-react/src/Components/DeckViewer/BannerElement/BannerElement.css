@@ -1,0 +1,44 @@
+.banner-element-container{
+    &
+}
+.banner-element,
+.banner-element::before,
+.banner-element::after {
+    transition: 0.3s all ease-out;
+}
+
+.banner-element {
+    align-items: center;
+    background: transparent;
+    display: flex;
+    height: 54px;
+    justify-content: center;
+    max-width: 350px;
+    position: relative;
+    transform: translate3d(0, 0, 0);
+    width: 80%;
+    margin: 0 auto;
+    color: #ffffff;
+    filter: drop-shadow(0 0 10px black);
+}
+
+.banner-element::before,
+.banner-element::after {
+    background: radial-gradient(circle, rgb(161, 0, 0) 0%, rgb(255, 203, 26) 100%);
+    content: "";
+    height: 50%;
+    left: 0px;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+
+.banner-element::before {
+    top: 1px;
+    transform: perspective(12px) rotateX(-3deg);
+}
+
+.banner-element::after {
+    bottom: 1px;
+    transform: perspective(12px) rotateX(3deg);
+}
