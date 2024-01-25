@@ -21,7 +21,7 @@ const DeckBuilderCardSlide = ({ card, handlePlusAmount, handleMinusAmount, handl
 
         return symbolSrcArray;
     }
-
+//TODO Refactor to use symbology hook
     useEffect(() => {
         if( symbologyData ){
             setSymbolUriArray( getSymbols() )

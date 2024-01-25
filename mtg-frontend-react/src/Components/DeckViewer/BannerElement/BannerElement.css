@@ -20,6 +20,9 @@
     margin: 0 auto;
     color: #ffffff;
     filter: drop-shadow(0 0 10px black);
+    & h1{
+        filter: drop-shadow( 0 0 1px black);
+    }
 }
 
 .banner-element::before,

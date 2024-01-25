@@ -24,6 +24,39 @@
 
     text-shadow: 0 1px 3px #000;
     box-shadow: inset 0 0 5px 3px rgba(1,1,1,0.3);
-
 }
 
+.deck-viewer-card-slide-container{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    margin: 2rem 0.5rem 2rem 0.5rem;
+
+    overflow-y: auto;
+}
+
+/* SCROLL BAR */
+.deck-viewer-card-slide-container::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: transparent;
+}
+
+.deck-viewer-card-slide-container::-webkit-scrollbar
+{
+    width: 10px;
+    margin-right: 1rem;
+    background-color: transparent;
+}
+
+.deck-viewer-card-slide-container::-webkit-scrollbar-thumb
+{
+    background-color: #331111;
+    border: 2px solid #555555;
+    border-radius: 2rem;
+}
