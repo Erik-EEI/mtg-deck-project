@@ -6,6 +6,7 @@
     flex-direction: row;
 
     padding: 3rem;
+
 }
 
 .deck-viewer-stats-container {
@@ -26,4 +27,19 @@
     flex-direction: column;
 
     padding: 1rem;
+}
+
+.deck-viewer-loading-container{
+    width: 100%;
+    height: calc(100vh - 20rem);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    & img {
+        width: 20%;
+    }
 }
