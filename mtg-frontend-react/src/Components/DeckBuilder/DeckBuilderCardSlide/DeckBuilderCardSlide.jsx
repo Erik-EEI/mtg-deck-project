@@ -16,7 +16,6 @@ const DeckBuilderCardSlide = ({ card, handlePlusAmount, handleMinusAmount, handl
             symbolSrcArray.push( symbolSrc );
         }
         } else {
-            console.log('Pushed X');
             symbolSrcArray.push(xSymbolSrc);
         }
 

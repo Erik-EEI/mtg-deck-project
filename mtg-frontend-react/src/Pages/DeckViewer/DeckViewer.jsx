@@ -2,8 +2,13 @@ import './DeckViewer.css';
 
 const DeckViewer = () => {
     return (
-        <div>
+        <div className={'deck-viewer-container'}>
+            <section className={'deck-viewer-stats-container'}>
 
+            </section>
+            <section className={'deck-viewer-summary-container'}>
+
+            </section>
         </div>
     );
 };
