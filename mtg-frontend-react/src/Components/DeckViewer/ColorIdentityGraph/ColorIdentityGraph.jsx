@@ -85,7 +85,7 @@ const ColorIdentityGraph = ({ deck }) => {
         };
     }, [deck]);
 
-    return <canvas ref={chartRef} width="400" height="200"/>;
+    return <canvas ref={chartRef} width="80%" />;
 };
 
 export default ColorIdentityGraph;

@@ -70,7 +70,7 @@ const ManaCurveChart = ({ deck }) => {
         };
     }, [deck]);
 
-    return <canvas ref={chartRef} width="400" height="200" />;
+    return <canvas ref={chartRef} width="20%" />;
 };
 
 export default ManaCurveChart;

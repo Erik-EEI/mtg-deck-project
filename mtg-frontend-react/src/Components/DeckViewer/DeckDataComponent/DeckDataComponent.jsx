@@ -8,6 +8,7 @@ const DeckDataComponent = ({deck, deckName} ) => {
                 <ManaCurveChart deck={deck} />
                 <ColorIdentityGraph deck={deck} />
             </section>
+            <div className={'deck-data-line'}></div>
 
         </div>
     );
