@@ -5,13 +5,19 @@ import {useEffect, useState} from "react";
 const DeckBuilderCardSlide = ({ card, handlePlusAmount, handleMinusAmount, handleRemove }) => {
     const [ symbolUriArray, setSymbolUriArray ] = useState([]);
     const { symbologyData } = useGetSymbology();
+    const xSymbolSrc = "https://svgs.scryfall.io/card-symbols/X.svg";
 
     const getSymbols = () => {
         const symbolSrcArray = [];
 
-        for(let symbol of card.data.colors){
+        if(Array.isArray(card.data.color_identity)){
+        for(let symbol of card.data.color_identity){
             const symbolSrc = symbologyData.data.find((symbolObject) => symbolObject.loose_variant === symbol).svg_uri;
             symbolSrcArray.push( symbolSrc );
+        }
+        } else {
+            console.log('Pushed X');
+            symbolSrcArray.push(xSymbolSrc);
         }
 
         return symbolSrcArray;

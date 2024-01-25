@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
 const DeckCardComponent = ({ deckName, deckCards }) => {
-    const { src, isLoading} = useImagePreloader( Object.values(deckCards)[0].data, 'art' );
+    const { src, isLoading} = useImagePreloader( Object.values(deckCards)[0]?.data, 'art' );
     const [ backgroundStyle, setBackgroundStyle ] = useState({});
     const navigate = useNavigate();
 
