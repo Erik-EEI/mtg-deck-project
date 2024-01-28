@@ -49,12 +49,22 @@ const ColorIdentityGraph = ({ deck }) => {
                         {
                             label: "Card count:",
                             data,
-                            backgroundColor: provideRGBCode( labels ),
+                            backgroundColor: provideRGBCode(labels),
                             borderWidth: 2,
                         },
                     ],
                 },
                 options: {
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                    },
+                    scales: {
+                        y: {
+                            display: false,
+                        },
+                    },
                     animation: {
                         onComplete: () => {
                             delayed = true;
@@ -69,11 +79,6 @@ const ColorIdentityGraph = ({ deck }) => {
                             return delay;
                         },
                     },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                        },
-                    },
                 },
             });
         }
@@ -85,7 +90,9 @@ const ColorIdentityGraph = ({ deck }) => {
         };
     }, [deck]);
 
-    return <canvas ref={chartRef} width="80%" />;
+
+
+    return <canvas ref={chartRef} height="200px" />;
 };
 
 export default ColorIdentityGraph;

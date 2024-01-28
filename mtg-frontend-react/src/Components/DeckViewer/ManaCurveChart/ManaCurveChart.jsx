@@ -35,8 +35,8 @@ const ManaCurveChart = ({ deck }) => {
                         {
                             label: 'Card Count',
                             data,
-                            backgroundColor: 'rgba(192,75,75,0.2)',
-                            borderColor: 'rgb(192,75,75)',
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)', // Adjusted background color
+                            borderColor: 'rgb(255, 99, 132)',
                             borderWidth: 1,
                         },
                     ],
@@ -59,6 +59,24 @@ const ManaCurveChart = ({ deck }) => {
                             beginAtZero: true,
                         },
                     },
+                    plugins: {
+                        legend: {
+                            display: false, // Hide legend for better visibility
+                        },
+                    },
+                    elements: {
+                        point: {
+                            backgroundColor: 'rgb(255, 99, 132)',
+                        },
+                    },
+                    layout: {
+                        padding: {
+                            left: 10,
+                            right: 10,
+                            top: 10,
+                            bottom: 10,
+                        },
+                    },
                 },
             });
         }
@@ -69,6 +87,7 @@ const ManaCurveChart = ({ deck }) => {
             }
         };
     }, [deck]);
+
 
     return <canvas ref={chartRef} width="20%" />;
 };
