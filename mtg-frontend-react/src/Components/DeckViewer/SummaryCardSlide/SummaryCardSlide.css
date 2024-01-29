@@ -37,4 +37,16 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+
+    transition: all 300ms;
+}
+
+.summary-slide-name:hover {
+    width: 100%;
+    height: fit-content;
+    overflow: hidden;
+    white-space: pre-wrap;
+    text-overflow: ellipsis;
+
+    transition: all 300ms;
 }

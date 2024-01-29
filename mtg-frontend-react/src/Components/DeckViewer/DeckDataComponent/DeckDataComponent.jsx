@@ -1,9 +1,8 @@
 import './DeckDataComponent.css';
-import {ColorIdentityGraph, ManaCurveChart} from "../index.js";
+import {ColorIdentityGraph, ColorOrientationDisplay, ManaCurveChart, StatsTable} from "../index.js";
 import {deckInfoService} from "../../../Utils/index.js";
 
 const DeckDataComponent = ({deck, deckName} ) => {
-    deckInfoService.getColorOrientation(deck);
 
     return (
         <div className={'deck-data-container'}>
@@ -12,6 +11,8 @@ const DeckDataComponent = ({deck, deckName} ) => {
                 <ColorIdentityGraph deck={deck} />
             </section>
             <div className={'deck-data-line'}></div>
+            <ColorOrientationDisplay deck={deck}/>
+            <StatsTable deck={deck}/>
 
         </div>
     );

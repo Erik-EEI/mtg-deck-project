@@ -1,0 +1,16 @@
+.stat-table, td, th {
+    width: 80%;
+    color: white;
+    border: solid white 1px;
+
+    text-align: left;
+
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.4);
+
+    box-shadow: 0 0 15px 5px black;
+}
+
+.stat-result {
+    text-align: center;
+}
