@@ -1,8 +1,7 @@
 import './DeckDataComponent.css';
 import {ColorIdentityGraph, ColorOrientationDisplay, ManaCurveChart, StatsTable} from "../index.js";
-import {deckInfoService} from "../../../Utils/index.js";
 
-const DeckDataComponent = ({deck, deckName} ) => {
+const DeckDataComponent = ({deck} ) => {
 
     return (
         <div className={'deck-data-container'}>

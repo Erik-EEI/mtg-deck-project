@@ -3,7 +3,12 @@ import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import { deckHandler } from "../../Utils/index.js";
 import {CardLoadingAnimation} from "../../Components/Discover/index.js";
-import {DeckDataComponent, DeckViewerSummary} from "../../Components/DeckViewer/index.js";
+import {
+    DeckDataComponent,
+    DeckViewerControls,
+    DeckViewerImageContainer,
+    DeckViewerSummary
+} from "../../Components/DeckViewer/index.js";
 
 const DeckViewer = () => {
     const { name } = useParams();
@@ -20,7 +25,8 @@ const DeckViewer = () => {
     return (
         <div className={'deck-viewer-container'}>
             <section className={'deck-viewer-controls'}>
-
+                <DeckViewerControls deckName={name}/>
+                <DeckViewerImageContainer deck={currentDeck}/>
             </section>
             <section className={'deck-viewer-stats-container'}>
                 <DeckDataComponent deckName={name} deck={currentDeck}/>
