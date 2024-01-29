@@ -25,7 +25,7 @@ const DeckViewer = () => {
     return (
         <div className={'deck-viewer-container'}>
             <section className={'deck-viewer-controls'}>
-                <DeckViewerControls deckName={name}/>
+                <DeckViewerControls deckName={name} deck={currentDeck}/>
                 <DeckViewerImageContainer deck={currentDeck}/>
             </section>
             <section className={'deck-viewer-stats-container'}>
