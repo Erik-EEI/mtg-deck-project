@@ -31,3 +31,10 @@
     width: 15%;
     height: 100%;
 }
+
+.summary-slide-name {
+    width: 70%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
