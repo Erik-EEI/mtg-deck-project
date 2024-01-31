@@ -1,6 +1,7 @@
 import './DeckBuilderCardBoard.css';
 import {DeckBuilderCardSlide} from "../index.js";
 import {useEffect, useState} from "react";
+import {EmptyAreaIcon} from "../../Global/index.js";
 
 const DeckBuilderCardBoard = ({ deck, handlePlusAmount, handleMinusAmount, handleRemove }) => {
     const [slidesToDisplay, setSidesToDisplay] = useState([]);

@@ -8,7 +8,6 @@ const fetchRandomCard = async () => {
         console.log(err);
     }
 };
-//TODO Wrap fetch to check localstorage first
 
 const useGetRandomCard = () => {
     const query = useQuery({

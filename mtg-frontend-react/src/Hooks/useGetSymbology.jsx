@@ -1,14 +1,23 @@
 import {useQuery} from '@tanstack/react-query';
 
+const getCachedSymbology = () => JSON.parse(localStorage.getItem('symbologyCache'));
+const cacheSymbologyData = ( data ) => localStorage.setItem('symbologyCache', JSON.stringify(data));
 const fetchSymbology = async () => {
     try {
+        const symbologyContainer = getCachedSymbology();
+        if(symbologyContainer) return symbologyContainer;
+        else {
         const response = await fetch(`https://api.scryfall.com/symbology`);
-        return await response.json();
+        const data = await response.json();
+
+        cacheSymbologyData( data );
+
+        return data;
+        }
     } catch (err) {
         console.log(err);
     }
 };
-//TODO Wrap fetch to check localstorage first
 
 const useGetSymbology = () => {
     const query = useQuery({
