@@ -7,7 +7,7 @@ import SearchLoadingAnimation from "./SearchLoadingAnimation/index.js";
 import DiscoverPageSelector from "./DiscoverPageSelector/index.js";
 import SearchFieldComponent from "./SearchFieldComponent/index.js";
 import CardLoadingAnimation from "./CardLoadingAnimation/index.js";
-import DefaultButton from "./DefaultButton/index.js";
+import DefaultButton from "../Global/DefaultButton/index.js";
 
 export {
     DiscoverSearchComponent,

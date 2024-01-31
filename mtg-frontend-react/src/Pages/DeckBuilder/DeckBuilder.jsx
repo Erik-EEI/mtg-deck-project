@@ -1,100 +1,51 @@
 import './DeckBuilder.css';
+import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
+import {buildHandler, deckHandler} from "../../Utils/index.js";
+import {DefaultButton} from "../../Components/Discover/index.js";
 import {
     DeckBuilderCardBoard,
     DeckBuilderSearchComponent,
-    DeckBuilderStatusBoard, DeckNameInputField
+    DeckBuilderStatusBoard,
+    DeckNameInputField
 } from "../../Components/DeckBuilder/index.js";
-import {useEffect, useState} from "react";
-import {DefaultButton} from "../../Components/Discover/index.js";
 
 const DeckBuilder = () => {
     const { name } = useParams();
-    const [isLoadedFromMemory, setIsLoadedFromMemory] = useState(false);
     const [deckName, setDeckName] = useState(name);
+    const [isLoadedFromMemory, setIsLoadedFromMemory] = useState(false);
     const [currentDeck, setCurrentDeck] = useState(
         {
         deckName: deckName,
         cards:{}
         });
 
-    useEffect(() => {
-        const deckContainer = JSON.parse( localStorage.getItem('deck-container') );
+    const loadDeckFromMemory = () => {
+        const cardArray = deckHandler.getDeck(name);
 
-        if( deckContainer && deckContainer[name] && !isLoadedFromMemory ){
+        if (cardArray && !isLoadedFromMemory) {
             const deckFromStorage = {
-                deckName: deckName,
-                cards: deckContainer[name]
-            }
+                deckName,
+                cards: cardArray,
+            };
 
-            setIsLoadedFromMemory( true );
+            setIsLoadedFromMemory(true);
             setCurrentDeck(deckFromStorage);
         }
+    };
 
+    useEffect(() => {
+        loadDeckFromMemory();
         updateCurrentDeckName();
-    }, [currentDeck, deckName]);
+    }, [deckName]);
 
-//TODO Might be better to load deck by ID instead of deck name
-    const handleCardClick = (cardData) => {
-        const updatedDeck = { ...currentDeck };
-        if (updatedDeck.cards[cardData.name]) {
-            updatedDeck.cards[cardData.name].amount++;
-        } else {
-            updatedDeck.cards[cardData.name] = { amount: 1, data: cardData };
-        }
-
-        setCurrentDeck(updatedDeck);
-    };
-    const updateCurrentDeckName = () => {
-        if( deckName !== currentDeck.deckName){
-            const updatedDeck = { ...currentDeck };
-            updatedDeck.deckName = deckName;
-
-            setCurrentDeck( updatedDeck );
-        }
-    }
-
-    const handlePlusAmount = (cardName) => {
-        const updatedDeck = { ...currentDeck };
-        updatedDeck.cards[cardName].amount++;
-
-        setCurrentDeck(updatedDeck);
-    };
-
-    const handleMinusAmount = (cardName) => {
-        const updatedDeck = { ...currentDeck };
-        updatedDeck.cards[cardName].amount--;
-
-        if (updatedDeck.cards[cardName].amount === 0) {
-            delete updatedDeck.cards[cardName];
-        }
-
-        setCurrentDeck(updatedDeck);
-    };
-
-    const handleRemove = (cardName) => {
-        const updatedDeck = { ...currentDeck };
-        delete updatedDeck.cards[cardName];
-
-        setCurrentDeck(updatedDeck);
-    };
-
-    const handleSaveDeck = () => {
-        let deckContainer = JSON.parse(localStorage.getItem('deck-container')) || {};
-        if( !deckContainer ) deckContainer = {};
-
-        deckContainer[currentDeck.deckName] = currentDeck.cards;
-
-        localStorage.setItem('deck-container', JSON.stringify(deckContainer));
-    };
-    const handleResetDeck = () => {
-        const factoryResetDeck = {
-            deckName: name,
-            cards:{}
-        };
-
-        setCurrentDeck( factoryResetDeck );
-    }
+    const handleCardClick = (cardData) => buildHandler.addCardToDeck( currentDeck,setCurrentDeck,cardData );
+    const updateCurrentDeckName = () => buildHandler.updateDeckName( currentDeck, deckName, setCurrentDeck );
+    const handlePlusAmount = (cardName) => buildHandler.incrementCardAmount( currentDeck, setCurrentDeck, cardName );
+    const handleMinusAmount = (cardName) => buildHandler.decreaseCardAmount( currentDeck, setCurrentDeck, cardName );
+    const handleRemove = (cardName) => buildHandler.removeCardFromDeck( currentDeck, setCurrentDeck, cardName );
+    const handleResetDeck = () => buildHandler.resetDeck( setCurrentDeck, deckName );
+    const handleSaveDeck = () => deckHandler.saveDeck( currentDeck );
 
     return (
         <div className={'deck-builder-page-container'}>
