@@ -1,8 +1,11 @@
 import './DeckViewerControls.css'
 import {DefaultButton} from "../../Discover/index.js";
+import {useNavigate} from "react-router-dom";
+import {deckHandler} from "../../../Utils/index.js";
 
 const DeckViewerControls = ({ deckName, deck }) => {
-    const downloadDeck = () => {
+    const navigate = useNavigate();
+    const handleDownloadClick = () => {
         const deckContent = Object.entries(deck)
             .map(([cardName, { amount }]) => `${cardName}: ${amount}`)
             .join('\n');
@@ -19,12 +22,25 @@ const DeckViewerControls = ({ deckName, deck }) => {
         document.body.removeChild(link);
     };
 
+    const handleEditClick = () => {
+        navigate(`/build/${deckName}`);
+    }
+
+    const handleDeleteClick = () => {
+        const shouldDelete = window.confirm(`Are you sure you want to delete the deck "${deckName}"?`);
+
+        if (shouldDelete) {
+            deckHandler.deleteDeck(deckName);
+            navigate('/my-decks');
+        }
+    }
+
 
     return (
         <div className={'deck-viewer-controls-container'}>
-            <DefaultButton text={'EDIT DECK'} />
-            <DefaultButton text={'DELETE DECK'} />
-            <DefaultButton text={'DOWNLOAD'} onClick={downloadDeck} />
+            <DefaultButton text={'EDIT DECK'} onClick={handleEditClick}/>
+            <DefaultButton text={'DELETE DECK'}  onClick={handleDeleteClick}/>
+            <DefaultButton text={'DOWNLOAD'} onClick={handleDownloadClick} />
         </div>
     );
 };

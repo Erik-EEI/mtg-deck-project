@@ -46,8 +46,8 @@ const getDeckAvailability = ( deck ) => {
 }
 
 export {
-    getColorOrientation,
     calculateAverageValue,
     getCardWithMaxValue,
+    getColorOrientation,
     getDeckAvailability
 }

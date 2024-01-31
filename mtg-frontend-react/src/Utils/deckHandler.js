@@ -13,7 +13,15 @@
         localStorage.setItem('deck-container', JSON.stringify(deckContainer));
     }
 
+    const deleteDeck = ( deckName ) => {
+        let deckContainer = JSON.parse(localStorage.getItem('deck-container')) || {};
+        delete deckContainer[deckName];
+
+        localStorage.setItem('deck-container', JSON.stringify(deckContainer));
+    }
+
 export {
     getDeck,
-    saveDeck
+    saveDeck,
+    deleteDeck
 };

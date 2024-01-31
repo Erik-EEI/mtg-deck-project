@@ -1,5 +1,6 @@
 import {useQuery} from '@tanstack/react-query';
-
+import {cacheHandler} from "../Utils/index.js";
+//TODO Refactor
 const buildURL = ( searchTerm, colorArray, typeSearchTerm, powerPreference, toughnessPreference, ) => {
     const searchParams = new URLSearchParams();
 
@@ -37,13 +38,21 @@ const buildURL = ( searchTerm, colorArray, typeSearchTerm, powerPreference, toug
 
 const fetchResults = async ( url ) => {
     try {
+        const cachedSearch = cacheHandler.getCache( url );
+
+        if(!cachedSearch){
         const response = await fetch(url);
-        return await response.json();
+        const data =  await response.json();
+
+        cacheHandler.saveCache( url, data );
+        return data;
+        } else {
+            return cachedSearch;
+        }
     } catch (err) {
         console.log(err);
     }
 };
-//TODO Wrap fetch to check localstorage first
 
 const useSearchCards = ( searchTerm, colorArray, powerPreference, toughnessPreference, typeSearchTerm ) => {
     const query = useQuery({
