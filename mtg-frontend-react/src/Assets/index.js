@@ -2,6 +2,7 @@ import viewIcon from './icons/viewIcon.svg';
 import gearIcon from './icons/gearIcon.svg';
 import checkIcon from './icons/check.svg';
 import logoBlack from './logo/deckwizard_logo_black.png';
+import emptyIcon from './ui/empty_icon.png';
 import logoWhite from './logo/deckwizard_logo_white.png';
 import arrowLeft from './icons/arrow-left.svg';
 import arrowRight from './icons/arrow-right.svg';
@@ -22,6 +23,7 @@ export {
     gearIcon,
     viewIcon,
     logoBlack,
+    emptyIcon,
     logoWhite,
     checkIcon,
     arrowLeft,

@@ -15,5 +15,5 @@ const ErrorPage = () => {
         </div>
     );
 };
-
+//TODO Extend error page
 export default ErrorPage;

@@ -9,6 +9,7 @@ import {
     DeckViewerImageContainer,
     DeckViewerSummary
 } from "../../Components/DeckViewer/index.js";
+import {EmptyAreaIcon} from "../../Components/Global/index.js";
 
 const DeckViewer = () => {
     const { name } = useParams();
@@ -21,7 +22,7 @@ const DeckViewer = () => {
     }, [name]);
 
     if( !currentDeck ) return <div className={'deck-viewer-loading-container'}><CardLoadingAnimation /></div> ;
-
+    if( Object.values( currentDeck ).length < 1) return <EmptyAreaIcon message={'This deck is empty!'}/>
     return (
         <div className={'deck-viewer-container'}>
             <section className={'deck-viewer-controls'}>

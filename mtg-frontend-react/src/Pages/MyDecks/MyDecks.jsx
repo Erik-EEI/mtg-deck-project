@@ -1,17 +1,13 @@
 import './MyDecks.css';
 import { DeckCardComponent } from "../../Components/MyDecks/index.js";
 import {useEffect, useState} from "react";
+import {deckHandler} from "../../Utils/index.js";
 
 const MyDecks = () => {
     const [ deckArray, setDeckArray ] = useState([]);
-    const retrieveDecks = () => {
-        const decks = JSON.parse(localStorage.getItem('deck-container'));
-        return decks ? decks : [];
-    }
 
     useEffect(() => {
-        const decks = retrieveDecks();
-        setDeckArray( decks );
+        setDeckArray( deckHandler.getAllDecks() );
     }, []);
 
     return (

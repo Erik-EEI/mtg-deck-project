@@ -1,0 +1,16 @@
+.empty-area-icon-container{
+    width: 100%;
+    height: calc(100vh - 20rem);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+
+    & img {
+        height: 80%;
+    }
+}

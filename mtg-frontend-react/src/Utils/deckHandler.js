@@ -4,6 +4,11 @@
     return deckContainer[deckName];
     }
 
+    const getAllDecks = () => {
+        const decks = JSON.parse(localStorage.getItem('deck-container'));
+        return decks ? decks : [];
+    }
+
     const saveDeck = ( deck ) => {
         let deckContainer = JSON.parse(localStorage.getItem('deck-container')) || {};
         if( !deckContainer ) deckContainer = {};
@@ -23,5 +28,6 @@
 export {
     getDeck,
     saveDeck,
-    deleteDeck
+    deleteDeck,
+    getAllDecks
 };

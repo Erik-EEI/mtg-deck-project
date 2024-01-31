@@ -27,7 +27,10 @@ const calculateAverageValue = ( deck, key ) => {
 };
 
 const getCardWithMaxValue = ( deck, key ) => {
-    const resultCard =  Object.values(deck).reduce((acc,curr) => Number(curr.data[key]) > Number(acc.data[key]) ? curr : acc);
+    const cardArray = Object.values(deck);
+
+    if(cardArray.length < 1) return 'N/A';
+    const resultCard =  cardArray.reduce((acc,curr) => Number(curr.data[key]) > Number(acc.data[key]) ? curr : acc);
 
     return resultCard.data;
 }
