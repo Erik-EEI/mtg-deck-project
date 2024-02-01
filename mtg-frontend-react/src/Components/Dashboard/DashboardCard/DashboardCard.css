@@ -24,10 +24,10 @@
 }
 
 .dashboard-card-container:hover {
-    box-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+    box-shadow: 0 0 8px var(--theme-shadow-color);
 
     & .card-icon{
-        filter:drop-shadow(0 0 0.75rem crimson);
+        filter:drop-shadow(0 0 0.75rem var(--theme-shadow-color));
     }
 }
 

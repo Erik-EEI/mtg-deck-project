@@ -8,6 +8,7 @@ const ThemePickerComponent = ( ) => {
     const handleSlideClick = ( theme ) => {
         themeHandler.changeBackground( theme );
         themeHandler.changeButtonColor( theme );
+        themeHandler.changeShadowColor( theme );
     }
 
 

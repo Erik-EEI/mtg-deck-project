@@ -17,9 +17,17 @@ const changeButtonColor = (theme) => {
     }
 }
 
+const changeShadowColor = ( theme ) => {
+    const rootElement = document.getElementById('root');
+    if(rootElement){
+        rootElement.style.setProperty('--theme-shadow-color', theme.shadowColor);
+    }
+}
+
 
 
 export {
     changeBackground,
-    changeButtonColor
+    changeButtonColor,
+    changeShadowColor
 }

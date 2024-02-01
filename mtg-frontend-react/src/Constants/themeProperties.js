@@ -8,7 +8,7 @@ const RED_THEME = {
     name: 'Red',
     background: 'url(/src/Assets/background/dashboard-background.jpg)',
     banner: backgroundBannerRed,
-    shadowColor: 'rgb(255,0,0)',
+    shadowColor: 'rgba(255, 0, 0, 0.8)',
     buttonColor: 'rgb(255,0,0)',
     button : {
         button_bg:'radial-gradient(circle, #51000000, #6b0000)',

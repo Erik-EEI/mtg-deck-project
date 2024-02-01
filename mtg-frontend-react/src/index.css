@@ -60,4 +60,7 @@ li {
   --theme-button-bottom: 4px groove #230000;
   --theme-button-active: radial-gradient(circle, rgba(0, 0, 0, 0.7), #a10404);
 
+  /* SHADOW */
+  --theme-shadow-color: rgba(255, 0, 0, 0.8);
+
 }
