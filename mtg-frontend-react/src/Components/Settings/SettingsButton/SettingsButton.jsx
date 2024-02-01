@@ -1,10 +1,8 @@
 import './SettingsButton.css';
 
-const SettingsButton = () => {
+const SettingsButton = ({ onclick, label, activePage}) => {
     return (
-        <div>
-
-        </div>
+        <button className={activePage === label ? 'settings-button settings-button-active' : 'settings-button'} onClick={onclick}>{label}</button>
     );
 };
 
