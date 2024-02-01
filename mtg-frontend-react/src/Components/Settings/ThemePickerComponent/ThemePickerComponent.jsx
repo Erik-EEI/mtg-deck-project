@@ -5,17 +5,7 @@ import {themeHandler} from "../../../Utils/index.js";
 
 const ThemePickerComponent = ( ) => {
 
-    const handleSlideClick = ( theme ) => {
-        themeHandler.changeBackground( theme );
-        themeHandler.changeNavButtonColor( theme );
-        themeHandler.changeShadowColor( theme );
-        themeHandler.changeDefaultButtonColor( theme );
-        themeHandler.changeMainColor( theme );
-        themeHandler.changeSecondaryColor( theme );
-        themeHandler.changePanelBackground( theme );
-        themeHandler.changePanelShadowColor( theme );
-    }
-
+    const handleSlideClick = ( theme ) => themeHandler.changeTheme( theme );
 
     return (
         <div className={'theme-picker-container'} >
