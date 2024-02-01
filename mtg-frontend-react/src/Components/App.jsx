@@ -5,7 +5,7 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 import Layout from "./Layout/Layout/index.js";
-import {Home, ErrorPage, Dashboard, Discover, DeckBuilder, MyDecks, DeckViewer} from "../Pages/index.js";
+import {Home, ErrorPage, Dashboard, Discover, DeckBuilder, MyDecks, DeckViewer, Settings} from "../Pages/index.js";
 import { QueryClient,QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient({
@@ -35,6 +35,9 @@ const router = createBrowserRouter(createRoutesFromElements(
         </Route>
         <Route path={'/view/:name'} element={<Layout />}>
             <Route index element={<DeckViewer />} />
+        </Route>
+        <Route path={'/settings'} element={<Layout />}>
+            <Route index element={<Settings/>} />
         </Route>
     </Route>,
 ));
