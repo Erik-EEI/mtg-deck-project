@@ -10,14 +10,14 @@
     text-shadow: 0 1px 3px #000;
     text-align: center;
     padding: 10px 0;
-    background: var(--theme-button-bg);
-    border-top: var(--theme-button-top);
-    border-left: var(--theme-button-left);
-    border-right: var(--theme-button-right);
-    border-bottom: var(--theme-button-bottom);
+    background: var(--theme-nav-button-bg);
+    border-top: var(--theme-nav-button-top);
+    border-left: var(--theme-nav-button-left);
+    border-right: var(--theme-nav-button-right);
+    border-bottom: var(--theme-nav-button-bottom);
     box-shadow: inset 0 0 5px 3px rgba(1,1,1,0.3);
 }
 
 .navbar-button-active{
-    background: var(--theme-button-active);
+    background: var(--theme-nav-button-active);
 }
