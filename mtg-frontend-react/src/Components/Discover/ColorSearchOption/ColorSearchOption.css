@@ -12,7 +12,7 @@
 }
 
 .color-chosen {
-    background-color: #3a0000;
+    background-color: var(--theme-secondary-color);
 
-    border-color: #860404;
+    border-color: var(--theme-main-color);
 }
