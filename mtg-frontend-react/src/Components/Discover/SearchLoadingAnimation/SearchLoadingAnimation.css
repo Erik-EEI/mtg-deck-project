@@ -4,7 +4,7 @@
     width: 30vw;
     filter:
             invert(100%)
-            drop-shadow(0px 0px 10px #880000);
+            drop-shadow(0px 0px 10px var(--theme-shadow-color));
 }
 @keyframes spin {
     0% {
