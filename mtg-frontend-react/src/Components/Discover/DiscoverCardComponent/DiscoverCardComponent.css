@@ -18,7 +18,7 @@
 
 .discover-card:hover {
     transform: scale(1.5);
-    box-shadow: 0 0 5rem #3a0000;
+    box-shadow: 0 0 5rem var(--theme-shadow-color);
     z-index: 4;
 }
 
