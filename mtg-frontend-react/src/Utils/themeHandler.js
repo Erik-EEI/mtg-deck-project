@@ -30,6 +30,20 @@ const changeDefaultButtonColor = (theme) => {
     }
 }
 
+const changeMainColor = (theme) => {
+    const rootElement = document.getElementById('root');
+    if(rootElement){
+        rootElement.style.setProperty('--theme-main-color', theme.mainColor);
+    }
+}
+
+const changeSecondaryColor = (theme) => {
+    const rootElement = document.getElementById('root');
+    if(rootElement){
+        rootElement.style.setProperty('--theme-secondary-color', theme.secondaryColor);
+    }
+}
+
 const changeShadowColor = ( theme ) => {
     const rootElement = document.getElementById('root');
     if(rootElement){
@@ -43,5 +57,7 @@ export {
     changeBackground,
     changeNavButtonColor,
     changeShadowColor,
-    changeDefaultButtonColor
+    changeDefaultButtonColor,
+    changeMainColor,
+    changeSecondaryColor
 }

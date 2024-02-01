@@ -41,7 +41,7 @@
     box-shadow: inset 0px 0px 5px black;
 }
 .multi-range-slider .bar-inner {
-    background-color: #d90000;
+    background-color: var(--theme-main-color);
     display: flex;
     flex-grow: 1;
     flex-shrink: 1;
@@ -107,7 +107,7 @@
     font-size: 90%;
     text-align: center;
     line-height: 30px;
-    background-color: #641717;
+    background-color: var(--theme-secondary-color);
     border-radius: 1rem;
     color: white;
     box-shadow: 0 0 5px black;

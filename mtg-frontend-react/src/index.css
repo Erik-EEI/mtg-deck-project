@@ -73,4 +73,7 @@ li {
   /* SHADOW */
   --theme-shadow-color: rgba(255, 0, 0, 0.8);
 
+  /* GENERIC */
+  --theme-main-color: rgb(155, 4, 4);
+  --theme-secondary-color: rgb(100,23,23);
 }

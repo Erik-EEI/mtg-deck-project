@@ -10,6 +10,8 @@ const ThemePickerComponent = ( ) => {
         themeHandler.changeNavButtonColor( theme );
         themeHandler.changeShadowColor( theme );
         themeHandler.changeDefaultButtonColor( theme );
+        themeHandler.changeMainColor( theme );
+        themeHandler.changeSecondaryColor( theme )
     }
 
 

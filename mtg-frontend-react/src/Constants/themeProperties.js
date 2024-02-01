@@ -8,6 +8,8 @@ const RED_THEME = {
     name: 'Red',
     background: 'url(/src/Assets/background/dashboard-background.jpg)',
     banner: backgroundBannerRed,
+    mainColor: 'rgb(155, 4, 4)',
+    secondaryColor: 'rgb(100,23,23)',
     shadowColor: 'rgba(255, 0, 0, 0.8)',
     buttonColor: 'rgb(255,0,0)',
     button : {
@@ -35,6 +37,8 @@ const BLUE_THEME = {
     name: 'Blue',
     background: 'url(/src/Assets/background/bg_blue.jpg)',
     banner: backgroundBannerBlue,
+    mainColor: 'rgb(5,12,143)',
+    secondaryColor: 'rgb(5,10,84)',
     shadowColor: 'rgb(41,54,121)',
     buttonColor: 'rgb(41,54,121)',
     button: {
@@ -62,6 +66,8 @@ const GREEN_THEME = {
     name: 'Green',
     background: 'url(/src/Assets/background/bg-green.jpg)',
     banner: backgroundBannerGreen,
+    mainColor: 'rgb(24,121,9)',
+    secondaryColor: 'rgb(17,80,4)',
     shadowColor: 'rgb(52,126,53)',
     buttonColor: 'rgb(52,126,53)',
     button : {
