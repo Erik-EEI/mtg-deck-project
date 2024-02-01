@@ -27,7 +27,7 @@
 
 .banner-element::before,
 .banner-element::after {
-    background: radial-gradient(circle, rgb(161, 0, 0) 0%, rgb(255, 203, 26) 100%);
+    background: radial-gradient(circle, var(--theme-main-color) 0%, rgb(255, 203, 26) 100%);
     content: "";
     height: 50%;
     left: 0px;
