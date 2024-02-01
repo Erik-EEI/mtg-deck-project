@@ -51,4 +51,13 @@ li {
   background-position: bottom;
   background-repeat: no-repeat;
   background-color: black;
+
+  /* BUTTON */
+  --theme-button-bg: radial-gradient(circle, #51000000, #6b0000);
+  --theme-button-top: 4px ridge #0e0000;
+  --theme-button-left: 4px groove #310000;
+  --theme-button-right: 4px ridge #1f0101;
+  --theme-button-bottom: 4px groove #230000;
+  --theme-button-active: radial-gradient(circle, rgba(0, 0, 0, 0.7), #a10404);
+
 }

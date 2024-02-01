@@ -6,7 +6,8 @@ import {themeHandler} from "../../../Utils/index.js";
 const ThemePickerComponent = ( ) => {
 
     const handleSlideClick = ( theme ) => {
-        themeHandler.changeBackground( theme )
+        themeHandler.changeBackground( theme );
+        themeHandler.changeButtonColor( theme );
     }
 
 
