@@ -1,0 +1,37 @@
+import './UsernameChangerComponent.css';
+import {useState} from "react";
+import {userNameHandler} from "../../../Utils/index.js";
+import {SettingsButton} from "../index.js";
+
+const UsernameChangerComponent = () => {
+    const [ usernameInput, setUsernameInput ] = useState('');
+    const [ currentUsername, setCurrentUsername ] = useState( userNameHandler.getUsername() );
+
+    const handleSaveClick = () => {
+        if(usernameInput.trim() !== ''){
+        userNameHandler.saveUsername( usernameInput );
+        setCurrentUsername( usernameInput );
+        setUsernameInput('');
+        } else {
+            setUsernameInput('');
+        }
+    }
+
+
+    return (
+        <div className={'username-component-container'}>
+            <h3>Current username:</h3>
+            <h1>{currentUsername}</h1>
+
+            <input
+            type='text'
+            value={usernameInput}
+            onInput={(e) => setUsernameInput(e.target.value)}
+            />
+            <SettingsButton label={'Save'} onclick={handleSaveClick}/>
+
+        </div>
+    );
+};
+
+export default UsernameChangerComponent;

@@ -1,3 +1,7 @@
+import UsernameChangerComponent from "./UsernameChangerComponent/index.js";
 import SettingsButton from "./SettingsButton/index.js";
 
-export default SettingsButton;
+export  {
+    UsernameChangerComponent,
+    SettingsButton,
+};

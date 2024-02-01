@@ -1,9 +1,11 @@
 import "./HomeButton.css"
 import {useNavigate} from "react-router-dom";
+import {userNameHandler} from "../../../Utils/index.js";
 const HomeButton = () => {
     const navigate = useNavigate();
 
     const handleOnClick = () => {
+        userNameHandler.setDefaultUsername();
         navigate("/main");
     }
 
