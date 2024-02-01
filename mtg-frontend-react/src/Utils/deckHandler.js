@@ -25,9 +25,14 @@
         localStorage.setItem('deck-container', JSON.stringify(deckContainer));
     }
 
+    const deleteAllDecks = () => {
+    localStorage.setItem('deck-container', '{}');
+    }
+
 export {
     getDeck,
     saveDeck,
     deleteDeck,
-    getAllDecks
+    getAllDecks,
+    deleteAllDecks
 };

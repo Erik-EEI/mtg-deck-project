@@ -1,7 +1,5 @@
 const setDefaultUsername = () => {
-    if( !localStorage.getItem('username') ){
     localStorage.setItem('username','Guest');
-    }
 }
 
 const getUsername = () => {

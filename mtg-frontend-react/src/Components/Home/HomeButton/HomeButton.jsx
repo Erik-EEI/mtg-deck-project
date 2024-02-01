@@ -5,7 +5,7 @@ const HomeButton = () => {
     const navigate = useNavigate();
 
     const handleOnClick = () => {
-        userNameHandler.setDefaultUsername();
+        if(!userNameHandler.getUsername()) userNameHandler.setDefaultUsername();
         navigate("/main");
     }
 

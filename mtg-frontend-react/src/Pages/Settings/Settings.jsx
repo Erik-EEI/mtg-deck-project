@@ -1,16 +1,25 @@
 import './Settings.css';
-import {SettingsButton, UsernameChangerComponent} from "../../Components/Settings/index.js";
-import {useState} from "react";
+import {
+    ResetComponent,
+    SettingsButton,
+    ThemePickerComponent,
+    UsernameChangerComponent
+} from "../../Components/Settings/index.js";
+import {useEffect, useState} from "react";
 
 const Settings = () => {
     const [ activePage, setActivePage ] = useState('Name');
     const pageComponents = {
         'Name': <UsernameChangerComponent />,
-        'Theme': '',
+        'Theme': <ThemePickerComponent />,
         'Export': '',
         'Import': '',
-        'Reset': '',
+        'Reset': <ResetComponent />,
     };
+
+    useEffect(() => {
+
+    }, [activePage]);
 
 
     return (
