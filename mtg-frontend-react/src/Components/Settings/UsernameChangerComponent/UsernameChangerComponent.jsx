@@ -20,15 +20,21 @@ const UsernameChangerComponent = () => {
 
     return (
         <div className={'username-component-container'}>
+            <section>
             <h3>Current username:</h3>
             <h1>{currentUsername}</h1>
-
+            </section>
+            <section>
             <input
             type='text'
             value={usernameInput}
+            className={'username-input-field'}
+            placeholder={'Enter new username'}
             onInput={(e) => setUsernameInput(e.target.value)}
             />
             <SettingsButton label={'Save'} onclick={handleSaveClick}/>
+            </section>
+
 
         </div>
     );

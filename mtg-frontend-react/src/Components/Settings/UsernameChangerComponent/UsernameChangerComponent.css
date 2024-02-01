@@ -6,7 +6,35 @@
     flex-direction: column;
 
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 
     color: white;
+
+    & section{
+        width: 100%;
+        height: fit-content;
+
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+    }
+
+    & h1 {
+        font-size: 5vw;
+    }
+}
+
+.username-input-field{
+    width:70%;
+    height: 3rem;
+
+    border: solid white 5px;
+    border-radius: 2rem;
+
+    text-align: center;
+
+    padding: 1rem;
+    margin: 2rem;
 }
