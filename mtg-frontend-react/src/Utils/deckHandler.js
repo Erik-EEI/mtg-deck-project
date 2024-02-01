@@ -1,6 +1,7 @@
 
     const getDeck = ( deckName ) => {
     const deckContainer = JSON.parse( localStorage.getItem('deck-container') );
+    if(!deckContainer) return null;
     return deckContainer[deckName];
     }
 

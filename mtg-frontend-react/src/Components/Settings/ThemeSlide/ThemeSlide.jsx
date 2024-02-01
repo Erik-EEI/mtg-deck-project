@@ -1,7 +1,7 @@
 import './ThemeSlide.css';
 import {useState} from "react";
 
-const ThemeSlide = ({ theme }) => {
+const ThemeSlide = ({ theme, onClick }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     const slideStyle = {
@@ -19,6 +19,7 @@ const ThemeSlide = ({ theme }) => {
             style={isHovered ?{...slideStyle, ...hoverStyle} : slideStyle}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            onClick={() => onClick(theme)}
         >
             <h1>{theme.name}</h1>
         </div>
