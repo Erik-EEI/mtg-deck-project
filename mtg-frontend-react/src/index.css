@@ -72,8 +72,12 @@ li {
 
   /* SHADOW */
   --theme-shadow-color: rgba(255, 0, 0, 0.8);
+  --theme-panel-shadow-color: rgba(24, 0, 0, 0.78);
 
   /* GENERIC */
   --theme-main-color: rgb(155, 4, 4);
   --theme-secondary-color: rgb(100,23,23);
+
+  /* PANEL BACKGROUND */
+  --theme-panel-bg: rgba(24, 0, 0, 0.6)
 }

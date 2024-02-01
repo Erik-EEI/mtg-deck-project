@@ -10,6 +10,7 @@ const RED_THEME = {
     banner: backgroundBannerRed,
     mainColor: 'rgb(155, 4, 4)',
     secondaryColor: 'rgb(100,23,23)',
+    panelBackground: 'rgba(24, 0, 0, 0.6)',
     shadowColor: 'rgba(255, 0, 0, 0.8)',
     buttonColor: 'rgb(255,0,0)',
     button : {
@@ -30,6 +31,10 @@ const RED_THEME = {
             button_active: 'radial-gradient(circle, #ec6a6a, #e52b2b)',
             button_hover_bg: 'radial-gradient(circle, #e52b2b, #8b0000)',
         },
+    },
+    shadow:{
+        main:'rgba(255, 0, 0, 0.8)',
+        panel:'rgba(24, 0, 0, 0.78)',
     }
 }
 
@@ -39,7 +44,7 @@ const BLUE_THEME = {
     banner: backgroundBannerBlue,
     mainColor: 'rgb(5,12,143)',
     secondaryColor: 'rgb(5,10,84)',
-    shadowColor: 'rgb(41,54,121)',
+    panelBackground: 'rgba(0, 0, 24, 0.6)',
     buttonColor: 'rgb(41,54,121)',
     button: {
         nav: {
@@ -59,6 +64,10 @@ const BLUE_THEME = {
             button_active: 'radial-gradient(circle, #6a6aec, #2b2be5)',
             button_hover_bg: 'radial-gradient(circle, #2b2be5, #00008b)',
         },
+    },
+    shadow:{
+        main:'rgb(41,54,121)',
+        panel:'rgba(26,35,84,0.8)',
     }
 }
 
@@ -68,7 +77,7 @@ const GREEN_THEME = {
     banner: backgroundBannerGreen,
     mainColor: 'rgb(24,121,9)',
     secondaryColor: 'rgb(17,80,4)',
-    shadowColor: 'rgb(52,126,53)',
+    panelBackground: 'rgba(0, 24, 0, 0.6)',
     buttonColor: 'rgb(52,126,53)',
     button : {
         nav:{
@@ -88,6 +97,10 @@ const GREEN_THEME = {
             button_active: 'radial-gradient(circle, #006a00, #005c00)',
             button_hover_bg: 'radial-gradient(circle, #005c00, #004f00)',
         },
+    },
+    shadow:{
+        main:'rgb(52,126,53)',
+        panel:'rgba(41,101,41,0.8)',
     }
 }
 

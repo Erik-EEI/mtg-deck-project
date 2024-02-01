@@ -26,7 +26,7 @@ const changeDefaultButtonColor = (theme) => {
         rootElement.style.setProperty('--theme-def-button-right', theme.button.default.button_right);
         rootElement.style.setProperty('--theme-def-button-bottom', theme.button.default.button_bottom);
         rootElement.style.setProperty('--theme-def-button-active', theme.button.default.button_active);
-        rootElement.style.setProperty('--theme-def-button-hover-bg', theme.button.default.button_active);
+        rootElement.style.setProperty('--theme-def-button-hover-bg', theme.button.default.button_hover_bg);
     }
 }
 
@@ -47,7 +47,21 @@ const changeSecondaryColor = (theme) => {
 const changeShadowColor = ( theme ) => {
     const rootElement = document.getElementById('root');
     if(rootElement){
-        rootElement.style.setProperty('--theme-shadow-color', theme.shadowColor);
+        rootElement.style.setProperty('--theme-shadow-color', theme.shadow.main);
+    }
+}
+
+const changePanelShadowColor = ( theme ) => {
+    const rootElement = document.getElementById('root');
+    if(rootElement){
+        rootElement.style.setProperty('--theme-panel-shadow-color', theme.shadow.panel);
+    }
+}
+
+const changePanelBackground = ( theme ) => {
+    const rootElement = document.getElementById('root');
+    if(rootElement){
+        rootElement.style.setProperty('--theme-panel-bg', theme.panelBackground);
     }
 }
 
@@ -59,5 +73,7 @@ export {
     changeShadowColor,
     changeDefaultButtonColor,
     changeMainColor,
-    changeSecondaryColor
+    changeSecondaryColor,
+    changePanelBackground,
+    changePanelShadowColor
 }

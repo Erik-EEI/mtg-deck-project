@@ -11,7 +11,9 @@ const ThemePickerComponent = ( ) => {
         themeHandler.changeShadowColor( theme );
         themeHandler.changeDefaultButtonColor( theme );
         themeHandler.changeMainColor( theme );
-        themeHandler.changeSecondaryColor( theme )
+        themeHandler.changeSecondaryColor( theme );
+        themeHandler.changePanelBackground( theme );
+        themeHandler.changePanelShadowColor( theme );
     }
 
 

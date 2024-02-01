@@ -21,7 +21,7 @@
 
     border-radius: 2rem;
 
-    box-shadow: 0 0 20px 11px rgba(24, 0, 0, 0.78);
+    box-shadow: 0 0 20px 11px var(--theme-panel-shadow-color);
 
     & img {
         cursor: pointer;
