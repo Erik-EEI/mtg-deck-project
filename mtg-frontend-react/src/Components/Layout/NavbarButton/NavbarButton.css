@@ -1,6 +1,6 @@
 .navbar-button{
     margin: 10px 0.8vh 10px 0.8vh;
-    width: 20rem;
+    width: 15rem;
     letter-spacing: 2px;
     border-radius: 8px;
     font-family: 'Skranji', cursive;
@@ -20,4 +20,9 @@
 
 .navbar-button-active{
     background: var(--theme-nav-button-active);
+}
+
+.navbar-button-small{
+    width: fit-content;
+    padding: 1rem 2rem 1rem 2rem;
 }

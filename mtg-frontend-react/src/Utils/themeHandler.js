@@ -17,22 +17,22 @@ const changeDefaultButtonColor = (theme, rootElement) => {
 }
 const changeBackground = (theme, rootElement) => rootElement.style.backgroundImage = theme.background;
 const changeMainColor = (theme, rootElement) => rootElement.style.setProperty('--theme-main-color', theme.mainColor);
-const changeSecondaryColor = (theme, rootElement) => rootElement.style.setProperty('--theme-secondary-color', theme.secondaryColor);
 const changeShadowColor = ( theme, rootElement) => rootElement.style.setProperty('--theme-shadow-color', theme.shadow.main);
-const changePanelShadowColor = ( theme, rootElement) => rootElement.style.setProperty('--theme-panel-shadow-color', theme.shadow.panel);
 const changePanelBackground = ( theme, rootElement) => rootElement.style.setProperty('--theme-panel-bg', theme.panelBackground);
+const changeSecondaryColor = (theme, rootElement) => rootElement.style.setProperty('--theme-secondary-color', theme.secondaryColor);
+const changePanelShadowColor = ( theme, rootElement) => rootElement.style.setProperty('--theme-panel-shadow-color', theme.shadow.panel);
 
 const changeTheme = ( theme ) => {
     const rootElement = document.getElementById('root');
     if(rootElement){
-    changeBackground( theme, rootElement );
-    changeNavButtonColor( theme, rootElement );
-    changeShadowColor( theme, rootElement );
-    changeDefaultButtonColor( theme, rootElement );
     changeMainColor( theme, rootElement );
+    changeBackground( theme, rootElement );
+    changeShadowColor( theme, rootElement );
+    changeNavButtonColor( theme, rootElement );
     changeSecondaryColor( theme, rootElement );
     changePanelBackground( theme, rootElement );
     changePanelShadowColor( theme, rootElement );
+    changeDefaultButtonColor( theme, rootElement );
     }
 }
 

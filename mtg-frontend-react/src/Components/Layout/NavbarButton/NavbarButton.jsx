@@ -1,9 +1,10 @@
 import './NavbarButton.css';
 import {useEffect, useState} from "react";
 
-const NavbarButton = ({ label, onClick, urlPath }) => {
+const NavbarButton = ({ label, onClick, urlPath, isSmall = false }) => {
     const [ isActive, setIsActive ] = useState( false );
-    const url = window.location.href;
+    const url = window.location.href
+
     useEffect(() => {
         const regex = new RegExp(urlPath,'gi');
 
@@ -16,7 +17,7 @@ const NavbarButton = ({ label, onClick, urlPath }) => {
     return (
         <button
         onClick={onClick}
-        className={isActive ? 'navbar-button navbar-button-active' : 'navbar-button'}
+        className={`navbar-button ${isActive && 'navbar-button-active'} ${isSmall && 'navbar-button-small'}`}
         >
             {label}
         </button>

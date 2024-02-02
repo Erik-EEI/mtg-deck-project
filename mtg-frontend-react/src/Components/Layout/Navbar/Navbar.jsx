@@ -1,5 +1,5 @@
 import './Navbar.css';
-import {logoWhite} from "../../../Assets/index.js";
+import {gearIcon, logoWhite} from "../../../Assets/index.js";
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {NavbarButton} from "../index.js";
@@ -31,6 +31,7 @@ const Navbar = () => {
             <NavbarButton onClick={() => handleNavButtonClick('discover')} label={'Discover'} urlPath={'discover'} />
             <NavbarButton onClick={() => handleNavButtonClick('build')} label={'Build'} urlPath={'build'} />
             <NavbarButton onClick={() => handleNavButtonClick('my-decks')} label={'Decks'} urlPath={'my-decks'} />
+            <NavbarButton onClick={() => handleNavButtonClick('settings')} label={ <img src={gearIcon} /> } urlPath={'settings'} isSmall={true}/>
         </div>
     </nav>
   );
