@@ -21,7 +21,7 @@ const ExportComponent = () => {
         link.click();
 
         document.body.removeChild(link);
-    }
+    } // TODO Move to util
 
     return (
         <div className={'export-component-container'}>
