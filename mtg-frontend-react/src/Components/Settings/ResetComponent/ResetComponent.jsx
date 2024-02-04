@@ -1,6 +1,7 @@
 import './ResetComponent.css';
-import {deckHandler, userNameHandler} from "../../../Utils/index.js";
+import {deckHandler, themeHandler, userNameHandler} from "../../../Utils/index.js";
 import {useNavigate} from "react-router-dom";
+import {RED_THEME} from "../../../Constants/themeProperties.js";
 
 const ResetComponent = () => {
     const navigate = useNavigate();
@@ -10,6 +11,7 @@ const ResetComponent = () => {
         if(shouldDelete){
             userNameHandler.setDefaultUsername();
             deckHandler.deleteAllDecks();
+            themeHandler.changeTheme( RED_THEME );
             navigate('/');
         }
     }
