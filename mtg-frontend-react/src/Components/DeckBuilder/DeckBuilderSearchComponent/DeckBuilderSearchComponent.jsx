@@ -10,6 +10,7 @@ const DeckBuilderSearchComponent = ({ onCardClick }) => {
     const [searchColors, setSearchColors] = useState([]);
     const [typeSearchTerm, setTypeSearchTerm] = useState('');
     const [lastSearchCode, setLastSearchCode] = useState('');
+    const [ currentPage, setCurrentPage ] = useState(1);
     const { symbologyData, isSymbologyError, isSymbologyLoading } = UseGetSymbology();
     const { resultCardsData, isResultsLoading, isResultsError, reFetchSearchCards } = useSearchCards( searchTerm, searchColors, typeSearchTerm );
 
@@ -40,6 +41,7 @@ const DeckBuilderSearchComponent = ({ onCardClick }) => {
         }else{
             setLastSearchCode( generateSearchCode() );
             reFetchSearchCards();
+            setCurrentPage(1);
         }
     }
 //TODO Elevate constants, check ? on deckBuilderCardSelector props
@@ -57,7 +59,13 @@ const DeckBuilderSearchComponent = ({ onCardClick }) => {
                     />
             </section>
             <section className={'deck-builder-search-results'}>
-                <DeckBuilderCardSelector cardArray={resultCardsData?.data} isLoading={isResultsLoading} onCardClick={onCardClick}/>
+                <DeckBuilderCardSelector
+                    cardArray={resultCardsData?.data}
+                    isLoading={isResultsLoading}
+                    onCardClick={onCardClick}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                />
             </section>
         </div>
     );

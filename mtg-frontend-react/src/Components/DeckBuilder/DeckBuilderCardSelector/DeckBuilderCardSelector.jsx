@@ -3,8 +3,7 @@ import {useEffect, useState} from "react";
 import {arrowLeft, arrowRight} from "../../../Assets/index.js";
 import {DiscoverCardComponent, SearchLoadingAnimation} from "../../Discover/index.js";
 
-const DeckBuilderCardSelector = ({ cardArray, isLoading, onCardClick }) => {
-    const [ currentPage, setCurrentPage ] = useState(1);
+const DeckBuilderCardSelector = ({ cardArray, isLoading, onCardClick, currentPage, setCurrentPage }) => {
     const [ cardsToDisplay, setCardsToDisplay ] = useState(null);
 
     useEffect(() => {
