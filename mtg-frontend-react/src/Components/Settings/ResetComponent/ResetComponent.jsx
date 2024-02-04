@@ -19,6 +19,10 @@ const ResetComponent = () => {
     return (
         <div className={'reset-button-container'}>
             <button className={'reset-button'} onClick={handleResetClick}>Reset Page</button>
+            <p className={'reset-notice'} style={{}}>
+                <strong>Notice:</strong> Clicking the "RESET" button will revert all changes to the default settings.
+                Make sure to export your current state before resetting.
+            </p>
         </div>
     );
 };
