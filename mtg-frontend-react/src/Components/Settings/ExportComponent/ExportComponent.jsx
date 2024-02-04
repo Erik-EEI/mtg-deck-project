@@ -2,7 +2,7 @@ import './ExportComponent.css';
 import {DefaultButton} from "../../Global/index.js";
 import {deckHandler, themeHandler, userNameHandler} from "../../../Utils/index.js";
 import {useState} from "react";
-import {checkIcon} from "../../../Assets/index.js";
+import {checkIcon, exportWizardLogo} from "../../../Assets/index.js";
 
 const ExportComponent = () => {
     const [fileName, setFileName] = useState('DeckWizardExport');
@@ -37,6 +37,7 @@ const ExportComponent = () => {
     return (
         <div className={'export-component-container'}>
             <p> Export all of your settings, decks and preferences from your DeckWizard site.<br/> Share it with your friends or save it for later.</p>
+            <img src={exportWizardLogo} alt={'Export wizard logo'} />
             <input
             type={'text'}
             value={fileName}

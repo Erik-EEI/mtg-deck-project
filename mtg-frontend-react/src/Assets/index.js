@@ -14,6 +14,8 @@ import backgroundBlue from './background/bg_blue.jpg';
 import cardPlaceholder from './card/card_placeholder.jpg';
 import backgroundGreen from './background/bg-green.jpg';
 import backgroundVideo from './background/home_bg_video.mp4';
+import exportWizardLogo from './ui/export_wizard_logo.png';
+import importWizardLogo from './ui/import_wizar_logo_white.png';
 import backgroundPicture from './background/dashboard-background.jpg'
 import backgroundBannerRed from './ui/bg-banner-red.png';
 import searchingWizardLogo from './ui/searching-wizard.png';
@@ -43,6 +45,8 @@ export {
     backgroundVideo,
     backgroundGreen,
     cardPlaceholder,
+    importWizardLogo,
+    exportWizardLogo,
     backgroundPicture,
     searchingWizardLogo,
     backgroundBannerRed,
