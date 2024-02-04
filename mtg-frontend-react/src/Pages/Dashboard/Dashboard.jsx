@@ -10,14 +10,24 @@ import {
     dashboardViewBackground,
     dashboardSettingsBackground
 } from "../../Assets/index.js";
+import {useEffect, useState} from "react";
+import {userNameHandler} from "../../Utils/index.js";
 
 //TODO Lift constant variables
 const Dashboard = () => {
+    const [ username, setUsername ] = useState( 'Guest' );
+
+    useEffect(() => {
+        const username = userNameHandler.getUsername();
+
+        if( username !== 'Guest') setUsername( username );
+    }, []);
 
     return (
         <div id='dashboard-container'>
-            <h1>Welcome to Deck Wizard</h1>
-            <h1>Your Ultimate Magic: The Gathering Card Haven!</h1>
+            <h1> Dear {username},</h1>
+            <h1>Welcome {username === 'Guest' ? '' : 'back '}to Deck Wizard!</h1>
+            <h2>Your Ultimate Magic: The Gathering Card Haven!</h2>
             <p>Dive into the enchanting world of Magic: The Gathering with our comprehensive card database! </p>
             <p>Whether you're a seasoned Planeswalker or just starting your journey, our platform is your go-to destination for exploring and creating decks that will leave your opponents spellbound.</p>
             <div id='dashboard-cards-container'>
