@@ -2,9 +2,12 @@ import './ExportComponent.css';
 import {DefaultButton} from "../../Global/index.js";
 import {deckHandler, themeHandler, userNameHandler} from "../../../Utils/index.js";
 import {useState} from "react";
+import {checkIcon} from "../../../Assets/index.js";
 
 const ExportComponent = () => {
     const [fileName, setFileName] = useState('DeckWizardExport');
+    const [success, setSuccess] = useState(false);
+
     const handleExport = () => {
         const userName = userNameHandler.getUsername();
         const theme = themeHandler.getTheme();
@@ -21,7 +24,15 @@ const ExportComponent = () => {
         link.click();
 
         document.body.removeChild(link);
+        setSuccess(true);
     } // TODO Move to util
+
+    if(success) return (
+        <div className={'import-success-container'}>
+            <img src={checkIcon} alt={'successful import icon'} />
+            <h1>Successful data export</h1>
+        </div>
+    );
 
     return (
         <div className={'export-component-container'}>
