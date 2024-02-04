@@ -7,6 +7,7 @@ import {
 import Layout from "./Layout/Layout/index.js";
 import {Home, ErrorPage, Dashboard, Discover, DeckBuilder, MyDecks, DeckViewer, Settings} from "../Pages/index.js";
 import { QueryClient,QueryClientProvider } from "@tanstack/react-query";
+import {themeHandler} from "../Utils/index.js";
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -43,6 +44,8 @@ const router = createBrowserRouter(createRoutesFromElements(
 ));
 
 const App = () => {
+    //TODO Check if this method is valid
+    themeHandler.applyTheme();
   return (
       <QueryClientProvider client={queryClient}>
           <RouterProvider router={router} />

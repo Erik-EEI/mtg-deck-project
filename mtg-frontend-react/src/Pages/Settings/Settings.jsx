@@ -1,5 +1,6 @@
 import './Settings.css';
 import {
+    ExportComponent,
     ResetComponent,
     SettingsButton,
     ThemePickerComponent,
@@ -12,7 +13,7 @@ const Settings = () => {
     const pageComponents = {
         'Name': <UsernameChangerComponent />,
         'Theme': <ThemePickerComponent />,
-        'Export': '',
+        'Export': <ExportComponent />,
         'Import': '',
         'Reset': <ResetComponent />,
     };

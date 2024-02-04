@@ -1,7 +1,8 @@
 import {
+    backgroundBannerBlack,
     backgroundBannerBlue,
     backgroundBannerGreen,
-    backgroundBannerRed,
+    backgroundBannerRed, backgroundBannerWhite,
 } from "../Assets/index.js";
 
 const RED_THEME = {
@@ -104,8 +105,76 @@ const GREEN_THEME = {
     }
 }
 
+const WHITE_THEME = {
+    name: 'White',
+    background: 'url(/src/Assets/background/bg_white.jpg)',
+    banner: backgroundBannerWhite,
+    mainColor: 'rgb(178,155,87)',
+    secondaryColor: 'rgb(98,95,53)',
+    panelBackground: 'rgba(24,21,0,0.6)',
+    buttonColor: 'rgb(194,191,112)',
+    button : {
+        nav:{
+            button_bg:'radial-gradient(circle, #51000000, #6b6200)',
+            button_top: '4px ridge #0e0c00',
+            button_left: '4px groove #312a00',
+            button_right: '4px ridge #1f1a01',
+            button_bottom: '4px groove #232000',
+            button_active: 'radial-gradient(circle, rgba(0, 0, 0, 0.7), #a19904)'
+        },
+        default: {
+            button_bg: 'radial-gradient(circle, #73693c, #c7b15b)',
+            button_top: '4px ridge #736539',
+            button_left: '4px groove #3a341e',
+            button_right: '4px ridge #1f1a01',
+            button_bottom: '4px groove #231e00',
+            button_active: 'radial-gradient(circle, #ecce6a, #e3c359)',
+            button_hover_bg: 'radial-gradient(circle, #eac874, #83752e)',
+        },
+    },
+    shadow:{
+        main:'rgb(126,111,52)',
+        panel:'rgba(101,98,41,0.8)',
+    }
+}
+
+const BLACK_THEME = {
+    name: 'Black',
+    background: 'url(/src/Assets/background/bg_black.jpg)',
+    banner: backgroundBannerBlack,
+    mainColor: 'rgb(104,45,126)',
+    secondaryColor: 'rgb(88,53,98)',
+    panelBackground: 'rgba(14,0,24,0.6)',
+    buttonColor: 'rgb(95,49,110)',
+    button : {
+        nav:{
+            button_bg:'radial-gradient(circle, rgba(58, 0, 81, 0), #57006b)',
+            button_top: '4px ridge #0b000e',
+            button_left: '4px groove #260031',
+            button_right: '4px ridge #18011f',
+            button_bottom: '4px groove #1d0023',
+            button_active: 'radial-gradient(circle, rgba(0, 0, 0, 0.7), #8404a1)'
+        },
+        default: {
+            button_bg: 'radial-gradient(circle, #68008b, #72008b)',
+            button_top: '4px ridge #370049',
+            button_left: '4px groove #280031',
+            button_right: '4px ridge #19011f',
+            button_bottom: '4px groove #1b0023',
+            button_active: 'radial-gradient(circle, #d06aec, #c32be5)',
+            button_hover_bg: 'radial-gradient(circle, #c32be5, #78008b)',
+        },
+    },
+    shadow:{
+        main:'rgb(110,52,126)',
+        panel:'rgba(88,41,101,0.8)',
+    }
+}
+
 export {
     RED_THEME,
     BLUE_THEME,
-    GREEN_THEME
+    GREEN_THEME,
+    WHITE_THEME,
+    BLACK_THEME
 }

@@ -19,6 +19,8 @@ import backgroundBannerRed from './ui/bg-banner-red.png';
 import searchingWizardLogo from './ui/searching-wizard.png';
 import backgroundBannerBlue from './ui/bg-banner-blue.png';
 import backgroundBannerGreen from './ui/bg_banner_green.png';
+import backgroundBannerBlack from './ui/bg_black_banner.png';
+import backgroundBannerWhite from './ui/bg_white_banner.png';
 import dashboardViewBackground from './ui/dashboard_view_bg.jpg';
 import dashboardBuildBackground from './ui/dashboard_build_bg.jpg';
 import dashboardSettingsBackground from './ui/dashboard_settings_bg.jpg';
@@ -45,6 +47,8 @@ export {
     searchingWizardLogo,
     backgroundBannerRed,
     backgroundBannerBlue,
+    backgroundBannerBlack,
+    backgroundBannerWhite,
     backgroundBannerGreen,
     dashboardViewBackground,
     dashboardBuildBackground,

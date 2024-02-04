@@ -33,11 +33,25 @@ const changeTheme = ( theme ) => {
     changePanelBackground( theme, rootElement );
     changePanelShadowColor( theme, rootElement );
     changeDefaultButtonColor( theme, rootElement );
+
+    localStorage.setItem('theme', JSON.stringify(theme));
     }
+}
+
+const applyTheme = () => {
+    const savedTheme = JSON.parse( localStorage.getItem('theme') );
+    if( savedTheme ) changeTheme( savedTheme );
+}
+
+const getTheme = () => {
+    const savedTheme = JSON.parse( localStorage.getItem('theme') );
+    return savedTheme ? savedTheme : {};
 }
 
 
 
 export {
-    changeTheme
+    changeTheme,
+    applyTheme,
+    getTheme
 }
